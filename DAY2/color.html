@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color Picker Tool</title>
+<style>
+    body {
+        font-family: Arial;
+        background: #f3f3f3;
+        text-align: center;
+        padding: 20px;
+    }
+    .box {
+        width: 250px;
+        height: 150px;
+        margin: 20px auto;
+        border-radius: 10px;
+        border: 2px solid #333;
+    }
+    input {
+        margin: 15px;
+        padding: 10px;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎨 Simple Color Picker</h1>
+
+<div class="box" id="colorBox"></div>
+
+<input type="color" id="picker" value="#ff0000">
+<br>
+
+<input type="text" id="hex" placeholder="HEX Value (#RRGGBB)">
+<br>
+
+<input type="text" id="rgb" placeholder="RGB Value (rgb(0,0,0))">
+
+<script>
+    const picker = document.getElementById('picker');
+    const hex = document.getElementById('hex');
+    const rgb = document.getElementById('rgb');
+    const box = document.getElementById('colorBox');
+
+    picker.addEventListener('input', () => {
+        box.style.background = picker.value;
+        hex.value = picker.value;
+        
+        let r = parseInt(picker.value.substr(1,2), 16);
+        let g = parseInt(picker.value.substr(3,2), 16);
+        let b = parseInt(picker.value.substr(5,2), 16);
+        rgb.value = `rgb(${r}, ${g}, ${b})`;
+    });
+</script>
+
+</body>
+</html>

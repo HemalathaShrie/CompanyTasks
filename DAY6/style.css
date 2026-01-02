@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f9b233;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+/* NAV LINK DEFAULT */
+nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* NAV LINK HOVER */
+nav a:hover {
+  background-color: #000;      /* black background */
+  color: #f9b233;              /* yellow text */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* HERO CARD */
+.hero {
+  background: white;
+  border-radius: 30px;
+  display: flex;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -200px;
+  top: -100px;
+  width: 500px;
+  height: 500px;
+  background: #f9b233;
+  border-radius: 50%;
+}
+
+.content {
+  width: 55%;
+  z-index: 2;
+}
+
+.role {
+  color: #f9b233;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 20px 0;
+}
+
+p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary {
+  background: #f9b233;
+  color: #000;
+}
+
+.outline {
+  border: 2px solid #000;
+  color: #000;
+}
+
+.contact-info {
+  font-size: 14px;
+}
+
+/* IMAGE */
+.image-area {
+  width: 45%;
+  z-index: 2;
+}
+
+.image-area img {
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+}
+
+/* SECTIONS */
+.section {
+  margin-top: 60px;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+footer {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content, .image-area {
+    width: 100%;
+  }
+
+  .image-area img {
+    margin: 30px auto 0;
+  }
+}

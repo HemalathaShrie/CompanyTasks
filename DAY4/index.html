@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://cdn.jsdelivr.net https://api.emailjs.com; 
+               script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://api.emailjs.com;">
+ 
+  <title>Professional Typing Test</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>Professional Typing Speed Test</h1>
+</header>
+
+<main>
+  <h3 style="background-color: azure;align-content: center;">⏱ Time Left: <span id="timer">60</span> sec</h3>
+
+  <div id="randomText"></div>
+
+  <textarea id="typingBox" placeholder="Start typing here..."></textarea>
+
+  <div class="buttons">
+    <button onclick="startTest()">Start</button>
+    <button onclick="stopTest()">Stop</button>
+    <button onclick="refreshText()">Refresh</button>
+  </div>
+<form onsubmit="sendEmail(event)">
+  <div class="user-info">
+    <table>
+      <tr>
+   <td> <label>Name </label></td>
+    <td><input id="name" placeholder="Your Name"></td>
+</tr>
+<tr>
+  <td>  <label>Enter Email</label></td>
+   <td> <input type="email" id="email" placeholder="Your Email" required></td>
+</tr>
+<tr id="message">
+  <td> </td>
+</tr>
+    <tr>
+      <td>
+        <button type="submit">Send</button>
+      </td>
+    </tr>
+    </table>
+  </div>
+</form>
+  <div id="result"></div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSS Selectors Overview (Inline CSS)</title>
+</head>
+
+<body style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;max-width: 800;
+ margin:0; padding:20px; background:#eef1f7; color:#222; 
+ line-height:1.6;">
+
+  <!-- Header -->
+  <header style="
+      background:#4368ad; 
+      color:white; 
+      padding:28px; 
+      border-radius:12px; 
+      margin-bottom:20px; 
+      text-align:center;
+      box-shadow:0 3px 6px rgba(0,0,0,0.15);">
+    <h1 style="margin:0; font-size:32px; letter-spacing:1px;">CSS Selectors Overview</h1>
+    <p style="margin-top:8px; opacity:0.9; font-size:16px;">
+      Learn how to target HTML elements using ID, Class, Tag, Group & more.
+    </p>
+  </header>
+
+  <section style="
+      background:#d1e3a7; 
+      padding:22px; 
+      border-radius:12px;
+      border:2px solid #ffb9b9;
+      box-shadow:0 2px 5px rgba(0,0,0,0.08);
+      margin-bottom:16px;">
+    <h2 style="margin-top:0; font-size:22px; color: #1b59cb;">1. Universal Selector (<code>*</code>)</h2>
+    <p>Selects <strong>all elements</strong> on the page. Useful for resets or base styling.</p>
+    <ul>
+      <li>Applies styles globally</li>
+      <li>Often used for CSS reset</li>
+      <li>Affects all elements - use carefully</li>
+      <li>Great for setting box-sizing for entire page</li>
+    </ul>
+    <pre style="background:#fff; padding:12px; border-radius:8px; border:1px solid #ddd;">
+* { margin:0; padding:0; box-sizing:border-box; }
+    </pre>
+  </section>
+
+  <section style="
+      background:#bddaf7; 
+      padding:22px; 
+      border-radius:12px;
+      border:2px solid #1a3d65;
+      box-shadow:0 2px 5px rgba(46, 41, 41, 0.08);
+      margin-bottom:16px;">
+    <h2 style="margin-top:0; font-size:22px;color: #8e9209;">2. Type Selector (Element Selector)</h2>
+    <p>Selects elements by tag name such as <code>h1</code>, <code>p</code>, <code>div</code>, etc.</p>
+    <ul>
+      <li>Applies style to all tags of a type</li>
+      <li>Ideal for typography</li>
+      <li>Lower specificity than class or ID</li>
+      <li>Good for global tag formatting</li>
+    </ul>
+    <pre style="background:#fff; padding:12px; border-radius:8px; border:1px solid #ddd;">
+p { font-size:16px; color:#333; }
+    </pre>
+  </section>
+
+  <section style="
+      background:#e9c0d4; 
+      padding:22px; 
+      border-radius:12px;
+      border:2px solid #1c8718;
+      box-shadow:0 2px 5px rgba(0,0,0,0.08);
+      margin-bottom:16px;">
+    <h2 style="margin-top:0; font-size:22px;color: #30652e;">3. Class Selector (<code>.</code>)</h2>
+    <p>Targets an element by its <code>class</code> attribute. Reusable many times.</p>
+    <ul>
+      <li>Most commonly used selector</li>
+      <li>Perfect for reusable UI components</li>
+      <li>Elements can have multiple classes</li>
+      <li>Moderate specificity level</li>
+    </ul>
+    <pre style="background:#fff; padding:12px; border-radius:8px; border:1px solid #ddd;">
+.title { font-weight:bold; color:green; }
+    </pre>
+  </section>
+
+  <section style="
+      background:#ece0c3; 
+      padding:22px; 
+      border-radius:12px;
+      border:2px solid #c58b26;
+      box-shadow:0 2px 5px rgba(0,0,0,0.08);
+      margin-bottom:16px;">
+    <h2 style="margin-top:0; font-size:22px;color: #411f68;">4. ID Selector (<code>#</code>)</h2>
+    <p>Targets a unique element by its <code>id</code>. Should be used only once per page.</p>
+    <ul>
+      <li>Highest specificity (stronger than class)</li>
+      <li>Used for unique layout blocks</li>
+      <li>Not reusable like class selectors</li>
+      <li>Helps in JavaScript element selection</li>
+    </ul>
+    <pre style="background:#fff; padding:12px; border-radius:8px; border:1px solid #ddd;">
+#mainHeader { background:#eee; padding:10px; }
+    </pre>
+  </section>
+
+  <section style="
+      background:#9bd48f; 
+      padding:22px; 
+      border-radius:12px;
+      border:2px solid #390771;
+      box-shadow:0 2px 5px rgba(0,0,0,0.08);
+      margin-bottom:20px;">
+    <h2 style="margin-top:0; font-size:22px;color: #861758;">5. Group Selector ( , )</h2>
+    <p>Used to apply the same styling to multiple selectors at once.</p>
+    <ul>
+      <li>Reduces duplicate CSS code</li>
+      <li>Makes stylesheet cleaner</li>
+      <li>Good for styling headings or shared elements</li>
+      <li>Improves maintainability</li>
+    </ul>
+    <pre style="background:#fff; padding:12px; border-radius:8px; border:1px solid #ddd;">
+h1, h2, h3 { font-family: Arial, sans-serif; }
+    </pre>
+  </section>
+
+  <footer style="text-align:center; padding:14px; color:#666; font-size:14px; margin-top:10px;">
+    © CSS Selectors Guide • Styled with Inline CSS
+  </footer>
+
+</body>
+</html>

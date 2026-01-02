@@ -1,0 +1,80 @@
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg, #eef2f3, #d9e4ec);
+  margin: 0;
+}
+
+header {
+  background: #1e3c72;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* TIMER */
+h3 {
+  text-align: center;
+  background: linear-gradient(90deg, #2193b0, #6dd5ed);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+/* RANDOM TEXT */
+#randomText {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+/* TEXTAREA */
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+/* BUTTONS */
+.buttons button,
+form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 10px 5px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttons button:hover,
+form button:hover {
+  background: #0056b3;
+}
+
+/* INPUTS */
+.user-info input {
+  padding: 8px;
+  margin: 5px;
+  width: 95%;
+}
+
+/* RESULT */
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #2c3e50;
+}
