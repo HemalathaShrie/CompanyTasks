@@ -1,0 +1,39 @@
+/* PAGE BACKGROUND */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e5e5e5;
+}
+
+/* TABLE STYLE */
+table {
+    width: 60%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background: #d9d9d9;
+}
+
+/* TABLE BORDERS & CELLS */
+th,
+td {
+    border: 1px solid #999;
+    padding: 10px;
+    text-align: center;
+}
+
+/* TABLE HEADER */
+th {
+    background: #807998;
+    font-weight: bold;
+    color: antiquewhite;
+}
+
+/* FUNCTIONAL GROUP COLUMN */
+.group {
+    font-weight: bold;
+    background: #807998;
+    text-align: center;
+    vertical-align: middle;
+    width: 18%;
+    color: antiquewhite;
+
+}
