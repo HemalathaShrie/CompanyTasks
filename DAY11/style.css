@@ -1,0 +1,177 @@
+    article {
+      margin-bottom: 15px;
+    }
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+   
+      /* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg, #bfc9d8, #a9f0a5);
+  color: #2d300b;
+}
+
+/* HEADER */
+.site-header {
+  background: #29374a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.site-header nav a {
+  color: #fa1241;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.site-header nav a:hover {
+  color: #ffffff;
+}
+
+/* MAIN */
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CARDS */
+.card {
+  background: rgb(254, 216, 216);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(197, 160, 160, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+/* aboout */
+.about{
+    border-left: #fa1241 5px solid;
+}
+
+/* Features */
+.features {
+  grid-template-columns: 1fr 1fr;
+  display:grid;
+}
+
+/* IMAGE */
+.img-box img {
+  width: 50%;
+  border-radius: 10px;
+  transition: transform 0.4s;
+}
+
+.img-box img:hover {
+  transform: scale(1.05);
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+/* topics */
+.topics{
+    border-left: #2d300b 5px solid;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #1f2937;
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+tbody tr:hover {
+  background: #eef5ff;
+}
+
+/* RESOURCES */
+.resource {
+  background: #eef5ff;
+  border-left: 5px solid #1f2937;
+}
+
+.resource a {
+  color: #1f2937;
+  font-weight: bold;
+}
+
+.resource a:hover {
+  text-decoration: underline;
+}
+
+/* VIDEO */
+iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+}
+
+/* FORM */
+form label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #374151;
+  transform: scale(1.05);
+}
+
+/* FOOTER */
+.site-footer {
+  background: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
