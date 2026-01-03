@@ -3,151 +3,171 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My HTML Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
     <!-- HEADER -->
-    <header class="site-header">
+    <header>
         <h1>My HTML Portfolio</h1>
+        <hr>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#features">Features</a>
-            <a href="#demo">Demo</a>
-            <a href="#contact">Contact</a>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Demo</a>
+            <a href="#">Contact</a>
         </nav>
+        <hr>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main id="home">
+    <!-- MAIN -->
+    <main>
 
         <!-- ABOUT -->
-        <section class="card about">
+        <section>
             <h2>About HTML</h2>
-            <article>
-                <p>
-                    <abbr title="HyperText Markup Language">HTML</abbr> is the standard language
-                    used to create and structure content on the web.
-                </p>
-            </article>
+            <hr>
+            <p>
+                HTML stands for HyperText Markup Language.
+                It is the standard language used to create web pages.
+            </p>
         </section>
 
         <!-- FEATURES -->
-        <section id="features" class=" card features">
-            <header>
+        <section class="features">
+            <div class="features-text">
                 <h2>Key Features of HTML</h2>
-            </header>
+                <hr>
+                <ul>
+                    <li>Easy to learn</li>
+                    <li>Semantic structure</li>
+                    <li>Multimedia support</li>
+                    <li>Forms and tables</li>
+                </ul>
+            </div>
 
-            <ul>
-                <li>Easy to learn</li>
-                <li>Semantic structure</li>
-                <li>Multimedia support</li>
-                <li>Forms and tables</li>
-            </ul>
-
-            <figure class="img-box">
-                <img src="https://media.istockphoto.com/id/1822963767/vector/a-young-woman-with-blond-hair-working-on-a-computer.jpg?s=612x612&w=0&k=20&c=j1hD0O3MWJNO0j_1xnTKO4U-OuHXaRlCAi-c6fUkOpA=" alt="Laptop and coffee"
-                    width="150">
+            <figure class="img-coffee">
+                <img src="https://images.unsplash.com/photo-1750322769300-58ad05c1f9dd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Laptop and coffee">
                 <figcaption>Laptop and coffee</figcaption>
             </figure>
         </section>
 
-        <!-- TOPICS -->
-        <section class="card topics">
-            <h2>HTML Topics Covered</h2>
-            <ol>
-                <li>Headings & Sections</li>
-                <li>Lists and Tables</li>
-                <li>Forms and Inputs</li>
-                <li>Media Embeds</li>
-            </ol>
-        </section>
+        <!-- TOPICS + TABLE -->
+        <section class="resource">
+            <div class="topics">
+                <h2>HTML Topics Covered</h2>
+                <hr>
+                <ol>
+                    <li>Headings & Sections</li>
+                    <li>Lists and Tables</li>
+                    <li>Forms and Inputs</li>
+                    <li>Media Embeds</li>
+                </ol>
+            </div>
 
-        <!-- PROJECT TABLE -->
-        <section class="card">
-            <h2>Project Timeline</h2>
-            <table>
-                <caption>HTML Project Development Phases</caption>
-                <thead>
+            <div>
+                <table>
+                    <tr class="table-title">
+                        <td colspan="4">
+                            Project Timeline</td>
+
+                    </tr>
                     <tr>
                         <th>Phase</th>
                         <th>Tasks</th>
                         <th>Duration</th>
+                        <th></th>
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
-                        <th>Planning</th>
+                        <td>Planning</td>
                         <td>Research & Outline</td>
                         <td>1 Week</td>
+                        <td></td>
                     </tr>
-                    <tr>
-                        <th>Development</th>
+                    <tr class="alt-row">
+                        <td>Development</td>
                         <td>Coding Content</td>
                         <td>2 Weeks</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <th>Review</th>
+                        <td>Review</td>
                         <td>Testing & Fixes</td>
                         <td>3 Days</td>
+                        <td></td>
                     </tr>
-                </tbody>
-            </table>
+                </table>
+            </div>
         </section>
 
         <!-- RESOURCES -->
-        <aside class="card resource">
-            <h3>Resources</h3>
-            <dl>
-                <dt><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></dt>
-                <dd>Comprehensive HTML reference</dd>
-
-                <dt><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></dt>
-                <dd>Learn HTML basics</dd>
-            </dl>
-        </aside>
-
-        <!-- VIDEO -->
-        <section id="demo" class="card">
-            <header>
-                <h2>Demo Video</h2>
-            </header>
-
-            <iframe width="50%" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU" title="HTML Demo Video"
-                loading="lazy">
-            </iframe>
+        <section>
+            <h2>Resources</h2>
+            <hr>
+            <ul>
+                <li>
+                    <a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a>
+                    - HTML Guide<br>
+                    <small>Comprehensive HTML reference</small>
+                </li>
+                <br>
+                <li>
+                    <a href="https://www.w3schools.com/" target="_blank">W3Schools</a>
+                    - HTML Tutorial<br>
+                    <small>Learn HTML basics</small>
+                </li>
+            </ul>
         </section>
 
-        <!-- CONTACT FORM -->
-        <section id="contact" class="card">
+        <!-- VIDEO -->
+        <section>
+            <h2>Demo Video</h2>
+            <hr>
+            <iframe src="https://www.youtube.com/embed/qz0aGYrrlhU" title="HTML Demo Video" loading="lazy">
+            </iframe>
+            <p class="center-text">Lazy-loaded demo via iframe</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section>
             <h2>Contact Me</h2>
+            <hr>
+
             <form>
-                <fieldset>
-                    <legend>Contact Details</legend>
+                <label>Name:
+                    <input type="text" style="width: 440px;">
+                </label><br><br>
 
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+                <label>Email:
+                    <input type="email" style="width: 440px;">
+                </label><br><br>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                <label>Message:
+                    <textarea rows="4" style="width: 440px;"></textarea>
+                </label><br><br>
 
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="4"></textarea>
-                </fieldset>
+                <label>
+                    <input type="checkbox"> Subscribe to newsletter?
+                </label>
+                <label>
+                    <input type="radio" name="sub"> Yes
+                </label>
+                <label>
+                    <input type="radio" name="sub"> No
+                </label>
+                <br><br>
 
-                <fieldset>
-                    <legend>Preferences</legend>
-
-                    <label>
-                        <input type="checkbox"> Subscribe to newsletter?
-                    </label>
-
-                    <p>Preferred Contact:</p>
-                    <label><input type="radio" name="contact"> Email</label>
-                    <label><input type="radio" name="contact"> Phone</label>
-                </fieldset>
+                <p>Preferred Contact:</p>
+                <label>
+                    <input type="checkbox"> Email
+                </label>
+                <label>
+                    <input type="checkbox"> Phone
+                </label>
+                <br><br>
 
                 <button type="submit">Submit</button>
             </form>
@@ -156,12 +176,13 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-        <address>
+    <footer>
+        <hr>
+        <p>
             © 2024 My HTML Portfolio |
-            <a href="mailto:contact@example.com">contact@example.com</a><br>
-            Location: Hyderabad, INDIA
-        </address>
+            <a href="mailto:contact@example.com">contact@example.com</a>
+            | Location: Anytown, USA
+        </p>
     </footer>
 
 </body>
