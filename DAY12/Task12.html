@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Web Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Interactive Web Project</h1>
+    <hr>
+    <nav>
+        <a href="#about">Home</a>
+        <a href="#to-do">Dynamic</a>
+        <a href="#timer">Timer</a>
+        <a href="#contact">Contact Form</a>
+    </nav>
+
+    <hr>
+    <h2>About This Project</h2>
+    <hr>
+    <section id="about" class="about">
+        <div class="left">
+            <p>
+                This is a sample interactive web page built using HTML and JavaScript.
+                It features dynamic content manipulation, form validation, and local storage.
+            </p>
+
+            <strong>Features Demonstrated:</strong>
+            <ul>
+                <li>DOM manipulation</li>
+                <li>Form validation</li>
+                <li>Event-handling</li>
+                <li>Dynamic content-updates</li>
+                <li>Local storage</li>
+            </ul>
+        </div>
+
+        <div class="right">
+            <iframe src="https://www.google.com/maps?q=Oppty+TechHub+Private+Limited+Hyderabad&output=embed"
+                loading="lazy">
+            </iframe>
+            <button class="toggle">Toggle Map</button>
+        </div>
+    </section>
+    <section id="to-do" class="two-column">
+        <div class="left">
+            <h3>Interactive To-Do List</h3>
+            <hr>
+            <div class="todo-input">
+                <input type="text" placeholder="New Task...">
+                <button>Add</button>
+            </div>
+
+            <ul class="todo-list">
+                <li>Learn HTML <button class="clear">Remove</button></li>
+                <li>Practice JavaScript <button class="clear">Remove</button></li>
+                <li>Store data in localStorage <button class="clear">Remove</button></li>
+            </ul>
+
+            <p class="note">Tasks are saved in your browser's local storage.</p>
+            <button class="clear">Clear All Tasks</button>
+            <hr>
+            <h3>Auto-Updating Timer</h3>
+            <p>This counter auto-updates every second:</p>
+            <div style="text-align: center;">
+                <h2>Time elapsed: 00:00:08</h2>
+
+                <button>Pause Timer</button>
+                <button>Reset Timer</button>
+            </div>
+            <h3>Feat Hessions & Videos</h3>
+            <hr>
+            <div class="left">
+                <iframe src="https://www.google.com/maps?q=Oppty+TechHub+Private+Limited+Hyderabad&output=embed"
+                    loading="lazy">
+                </iframe>
+
+                <button class="toggle">Toggle Map</button>
+            </div>
+        </div>
+        <div id="timer" class="right">
+            <h3>Auto-Updating Timer</h3>
+            <hr>
+            <p>This counter auto-updates every second:</p>
+            <div style="text-align: center;">
+                <h2>Time elapsed: 00:00:08</h2>
+
+                <button>Pause Timer</button>
+                <button>Reset Timer</button>
+            </div>
+            <h3 id="contact">Contact Form</h3>
+            <hr>
+            <p>Send me a message:</p>
+            <label>Name:</label>
+            <input type="text">
+            <small>Please enter your name.</small>
+
+            <label>Email:</label>
+            <input type="email">
+            <small>Please enter a valid email address.</small>
+
+            <label>Password:</label>
+            <input type="password">
+            <small>Password must be at least 6 characters long.</small>
+
+            <label>Message:</label>
+            <textarea></textarea>
+
+            <div class="inline">
+                <label>Subscribe to newsletter?</label>
+                <input type="checkbox"> Yes
+                <input type="checkbox"> No
+            </div>
+
+            <div class="inline">
+                <label>Preferred Contact:</label>
+                <input type="radio"> Email
+                <input type="radio"> Phone
+            </div>
+
+            <button class="clear">Clear Data</button>
+            <p class="success">Your information is saved in this browser!</p>
+        </div>
+    </section>
+    <hr>
+    <footer>
+        © 2024 Interactive Web Project | Your email:
+        <a href="#">user@example.com</a>
+        <br><br>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a>
+    </footer>
+
+</body>
+
+</html>

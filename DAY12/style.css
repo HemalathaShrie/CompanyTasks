@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", serif;
+  margin: 20px;
+  color: #000;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: underline;
+  color: #1a0dab;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.about,
+.two-column {
+  display: flex;
+  gap: 30px;
+  line-height: 1.6;
+}
+
+.left,
+.right {
+  width: 50%;
+}
+.todo-list button{
+ gap: 30px;
+}
+iframe {
+  width: 550px;
+  height: 300px;
+  border: 1px solid #ccc;
+}
+.toggle{
+    width: 550px;
+    border: 2px solid gray;
+    background-color: aliceblue;
+    color: #000;
+    font-weight: bold;
+}
+button {
+  padding: 5px 12px;
+  margin-top: 8px;
+  background-color: #103857;
+  color: white;
+  border: none;
+  border-radius: 3px;
+}
+/* Center only Clear All Tasks button (To-Do section) */
+.todo-list + .note + .clear {
+  display: block;
+  margin: 12px auto;
+}
+.clear{
+    background-color: lightgray;
+    color:#092b19;
+    border:1px solid gray;
+    border-radius: 3px;
+}
+.todo-input button{
+    width:80px;
+    height: 30px;
+}
+
+.todo-input {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+.todo-input input{
+    width: 600px;
+}
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.todo-list li {
+  margin: 5px 0;
+}
+
+.todo-list button {
+  margin-left: 10px;
+}
+
+.note {
+  background: #fcfc6b;
+  padding: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+  border: 1px solid  #9e9e66;
+}
+
+
+/* Contact form row layout */
+.right label {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.right input,
+.right textarea {
+  display: inline-block;
+  width: calc(100% - 140px);
+  margin-bottom: 2px;
+}
+
+/* small text always on next line */
+.right small {
+  display: block;
+  margin-left: 120px;
+  margin-bottom: 8px;
+}
+/* Inline checkbox & radio rows */
+.right .inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Keep label width same as other fields */
+.right .inline label {
+  width: 220px;
+  font-weight: bold;
+}
+
+/* Prevent wrapping */
+.right .inline input {
+  width: auto;
+  margin-left: 5px;
+}
+
+
+small {
+  color: red;
+}
+
+.inline {
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}
+
+.map-section iframe {
+  height: 250px;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+}
