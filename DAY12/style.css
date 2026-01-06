@@ -119,7 +119,7 @@ button {
 .right input,
 .right textarea {
   display: inline-block;
-  width: calc(100% - 140px);
+  width: 450px;
   margin-bottom: 2px;
 }
 
