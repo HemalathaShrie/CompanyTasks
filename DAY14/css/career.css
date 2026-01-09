@@ -1,0 +1,144 @@
+/* HERO */
+.career-hero {
+  background: url("https://wdtwpthemes.wpengine.com/hai/wp-content/uploads/sites/6/2023/09/breadcrumb-bg.jpg") center/cover no-repeat;
+  height: 320px;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.hero-overlay h1 {
+  font-size: 48px;
+}
+
+.hero-overlay span,a {
+  color: #f3efec;
+}
+
+/* BREADCRUMB */
+
+.breadcrumb{
+  font-size:14px;
+  color:#fff;
+  letter-spacing:1px;
+}
+
+.breadcrumb a{
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.breadcrumb a:hover{
+  color:#fe6412;
+}
+
+.breadcrumb span{
+  margin:0 6px;
+}
+
+.breadcrumb .active{
+  color:#ffffff;
+}
+
+/* JOIN FUTURE */
+.join-future {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 100px;
+  align-items: center;
+  gap: 40px;
+}
+
+.future-left {
+  display: flex;
+  gap: 20px;
+}
+
+.future-left h2 {
+  font-size: 36px;
+}
+
+.future-left span {
+  color: #f97316;
+}
+
+.future-right {
+  border-left: 3px solid #f97316;
+  padding-left: 30px;
+  line-height: 1.8;
+}
+
+/* FORM */
+.career-form-section {
+  background: #f6f9fc;
+  padding: 80px 0;
+}
+
+.career-form {
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: #fff;
+  max-width: 700px;
+  margin: auto;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(250, 57, 57, 0.5);
+}
+
+.career-form label {
+  display: block;
+  margin: 15px 0 6px;
+  font-weight: 600;
+}
+
+.career-form input,
+.career-form select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  margin-top: 30px;
+  width: 100%;
+  background: #504df8;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.submit-btn:hover{
+    background-color: #413efa;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .join-future {
+    grid-template-columns: 1fr;
+    padding: 50px 30px;
+  }
+
+  .career-form {
+    padding: 30px;
+  }
+}

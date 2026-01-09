@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="left">
+    <strong>Admin Portal</strong>
+  </div>
+  <div class="right">
+    <span id="adminName"></span>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-card">Users <span id="totalUsers">0</span></div>
+    <div class="stat-card">Active Breaks <span id="activeBreaks">0</span></div>
+    <div class="stat-card">Online <span id="onlineUsers">0</span></div>
+  </section>
+
+  <!-- ADD USER -->
+  <section class="card">
+    <h3>Add User</h3>
+    <div class="form-grid">
+      <input id="name" placeholder="Name">
+      <input id="email" placeholder="Email">
+      <select id="role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button onclick="addUser()">Add</button>
+    </div>
+  </section>
+
+  <!-- USER TABLE -->
+  <section class="card">
+    <h3>User Management</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Email</th><th>Role</th>
+          <th>Status</th><th>Online</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTable"></tbody>
+    </table>
+  </section>
+
+  <!-- BREAK TABLE -->
+  <section class="card">
+    <div class="flex">
+      <h3>Break Management</h3>
+      <button onclick="downloadCSV()">⬇ Download CSV</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th><th>Type</th><th>Start</th><th>Status</th><th>End</th>
+        </tr>
+      </thead>
+      <tbody id="breakTable"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="../auth/auth.js"></script>
+<script src="admin.js"></script>
+<script>
+  checkAuth("admin");
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Oppty Employee Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TAB ICON -->
+    <link rel="icon" type="image/png" href="https://oppty.in/wp-content/uploads/2025/07/cropped-oppty-1-180x180.png" />
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND OVERLAY -->
+    <div class="bg-overlay"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="dash-header">
+        <div class="header-left">
+            <img src="https://oppty.in/wp-content/uploads/2025/07/oppty.png" alt="Oppty Logo" class="header-logo" />
+        </div>
+
+        <div class="header-center">
+            <h1 class="gradient-text">Oppty Employee Dashboard</h1>
+        </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="dashboard">
+
+        <!-- ADMIN CARD -->
+        <div class="dash-card">
+            <!-- ADMIN ICON -->
+            <div class="icon admin">
+                <i class="fa-solid fa-shield"></i>
+            </div>
+            <h2>Admin Portal</h2>
+            <p>
+                Manage employees, monitor attendance, track productivity,
+                generate reports and control system settings.
+            </p>
+            <button class="btn admin-btn" onclick="window.location.href='auth/admin-login.html'">Access Admin</button>
+        </div>
+
+        <!-- USER CARD -->
+        <div class="dash-card">
+            <!-- USER ICON -->
+            <div class="icon user">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h2>Employee Portal</h2>
+            <p>
+                View shifts, request breaks, check attendance,
+                performance metrics and personal dashboard.
+            </p>
+            <button class="btn user-btn" onclick="window.location.href='auth/user-login.html'">Access Employee</button>
+        </div>
+
+    </main>
+
+    <!-- ================= FOOTER INFO ================= -->
+    <footer class="dash-footer">
+        <p>© 2026 Oppty TechHub · Real-Time Workforce Dashboard</p>
+    </footer>
+
+</body>
+
+</html>

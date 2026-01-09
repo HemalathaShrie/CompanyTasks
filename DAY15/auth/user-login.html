@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Login | Oppty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="https://oppty.in/wp-content/uploads/2025/07/cropped-oppty-1-180x180.png">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="login-card">
+  <a href="../index.html" class="back-link">← Back to Portal</a>
+
+  <img src="https://oppty.in/wp-content/uploads/2025/07/cropped-oppty-1-180x180.png"
+       class="login-logo" alt="Oppty">
+
+  <h2>Employee Login</h2>
+  <p>Employee Access Portal</p>
+
+  <form onsubmit="userLogin(event)">
+    <div class="form-group">
+      <label>Employee Email</label>
+      <input id="email" type="email" placeholder="employee@oppty.in" required>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input id="password" type="password" placeholder="••••••••" required>
+    </div>
+
+    <button type="submit" class="login-btn">Login to Dashboard</button>
+  </form>
+</div>
+<script src="auth.js"></script>
+</body>
+</html>
