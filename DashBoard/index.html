@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Break Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Break<span>MS</span></div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#roles">Roles</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="btn-outline" onclick="openProfile()">Personal Info</a>
+      <a href="login-admin.html" class="btn-outline">Admin</a>
+      <a href="login-user.html" class="btn-solid">User</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-split">
+
+  <!-- LEFT INFO -->
+  <div class="hero-box info fade-in">
+    <h1>Break Management System</h1>
+    <p>
+      Track employee breaks in real-time with IST based validation,
+      alerts, analytics and reports.
+    </p>
+  </div>
+
+  <!-- CENTER ACTIONS -->
+  <div class="hero-box actions">
+
+    <a href="login-user.html" class="circle-btn user pulse">
+      👤
+      <span>User</span>
+    </a>
+
+    <a href="login-admin.html" class="circle-btn admin pulse delay">
+      🛡
+      <span>Admin</span>
+    </a>
+
+  </div>
+
+  <!-- RIGHT FEATURES -->
+  <div class="hero-box features slide-up">
+    <div class="mini-card">⏱ Real-Time Break Tracking</div>
+    <div class="mini-card">⚠ Auto Alerts (1 Hour)</div>
+    <div class="mini-card">📊 Analytics Dashboard</div>
+  </div>
+
+</section>
+
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <h2 class="section-title">Key Features</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>📊 Live Dashboard</h3>
+        <p>Monitor users, breaks & analytics in real time.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🕒 IST Based Time</h3>
+        <p>All timestamps strictly follow Indian Standard Time.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📁 CSV Reports</h3>
+        <p>Download detailed reports for audits & analysis.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🔐 Secure Login</h3>
+        <p>Role-based authentication for Admin & Users.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section id="roles" class="roles">
+    <h2 class="section-title">System Roles</h2>
+
+    <div class="role-cards">
+      <div class="role admin">
+        <h3>Admin Portal</h3>
+        <ul>
+          <li>User Management</li>
+          <li>Break Analytics</li>
+          <li>Alerts & Reports</li>
+          <li>CSV Export</li>
+        </ul>
+      </div>
+
+      <div class="role user">
+        <h3>User Portal</h3>
+        <ul>
+          <li>Break In / Out</li>
+          <li>Live Timer</li>
+          <li>Daily Summary</li>
+          <li>Overtime Alerts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <p>© 2026 Break Management System | Designed by Oppty</p>
+  </footer>
+  <!-- PERSONAL INFO SLIDE PANEL -->
+  <div id="profilePanel" class="profile-panel">
+
+    <div class="profile-header">
+      <h2>Personal Information</h2>
+      <span class="close-btn" onclick="closeProfile()">×</span>
+    </div>
+    <!-- PROFILE PHOTO -->
+    <div class="photo-section">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" id="photoPreview" class="photo-preview"
+        onclick="document.getElementById('profilePhoto').click()">
+      <p class="photo-text">Upload Photo</p>
+
+      <input type="file" id="profilePhoto" accept="image/*" style="display:none">
+    </div>
+
+    <form class="profile-form">
+      <input type="text" id="fullName" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+
+      <select>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label>Date of Birth</label>
+      <input type="date">
+
+      <label>Date of Joining</label>
+      <input type="date">
+
+      <select>
+        <option value="">Blood Group</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>O+</option>
+        <option>O-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+      </select>
+
+      <input type="text" placeholder="Aadhaar Number">
+
+      <label>Upload Certificates</label>
+      <input type="file" multiple>
+
+      <button type="submit" class="btn-solid">Save Information</button>
+    </form>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

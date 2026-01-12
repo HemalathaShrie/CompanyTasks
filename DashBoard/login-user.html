@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Login | BreakMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="user-login.css">
+</head>
+<body>
+
+  <div class="login-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="login-left slide-in-left">
+      <h1>Welcome Back</h1>
+      <p>
+        Track your breaks, stay compliant, and maintain productivity.
+        All break activities are tracked in real-time using IST.
+      </p>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="login-right slide-in-right">
+      <form class="login-card glass">
+        <h2>User Login</h2>
+
+        <div class="input-group">
+          <input type="text"  id="username" required>
+          <label>User ID / Email</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" required>
+          <label>Password</label>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+        <p class="note">Your break activity is monitored</p>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="user-login.js"></script>
+</body>
+</html>

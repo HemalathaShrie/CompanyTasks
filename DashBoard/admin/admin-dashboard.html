@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard | BreakMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>Break<span>MS</span></h2>
+      <nav>
+        <a class="active">Dashboard</a>
+        <a>Users</a>
+        <a>Reports</a>
+        <a>Settings</a>
+        <a href="../login-admin.html">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- HEADER -->
+      <header class="topbar">
+        <h1>Admin Dashboard</h1>
+        <div class="ist-time" id="istTime"></div>
+      </header>
+
+      <!-- STATS -->
+      <section class="stats">
+        <div class="stat-card">
+          <h4>Total Users</h4>
+          <h2>25</h2>
+        </div>
+
+        <div class="stat-card">
+          <h4>Active Breaks</h4>
+          <h2>6</h2>
+        </div>
+
+        <div class="stat-card warning pulse">
+          <h4>Over 1 Hour</h4>
+          <h2>2</h2>
+        </div>
+
+        <div class="stat-card success">
+          <h4>Within Limit</h4>
+          <h2>19</h2>
+        </div>
+      </section>
+
+      <!-- CHART + ALERTS -->
+      <section class="grid">
+
+        <!-- CHART -->
+        <div class="card chart-card">
+          <h3>Daily Break Analytics</h3>
+          <canvas id="breakChart"></canvas>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="card alert-card">
+          <h3>⚠ Live Alerts</h3>
+
+          <div class="alert exceeded">
+            <strong>Ramesh</strong> – Break exceeded 1 hour
+          </div>
+
+          <div class="alert exceeded">
+            <strong>Sneha</strong> – Break exceeded 1 hour
+          </div>
+
+          <div class="alert normal">
+            <strong>Arjun</strong> – On break (35 min)
+          </div>
+        </div>
+
+      </section>
+      <!-- ADD EMPLOYEE SECTION -->
+      <section class="card table-card">
+        <h3>Add Employee</h3>
+
+        <div class="add-user-form">
+          <input type="text" id="empName" placeholder="Full Name" required>
+          <input type="email" id="empEmail" placeholder="Email" required>
+
+          <select id="empRole">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+
+          <button onclick="addEmployee()">Add Employee</button>
+        </div>
+      </section>
+
+      <!-- USER TABLE -->
+      <section class="card table-card">
+        <h3>Employee List</h3>
+
+        <input type="text" placeholder="Search user..." class="search" id="searchUser">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Break In</th>
+              <th>Break Out</th>
+              <th>Total Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="employeeTable"></tbody>
+        </table>
+      </section>
+
+
+    </main>
+  </div>
+  <script>
+    if (localStorage.getItem("adminLoggedIn") !== "true") {
+      alert("Unauthorized access!");
+      window.location.href = "../login-admin.html";
+    }
+  </script>
+
+  <script src="admin-dashboard.js"></script>
+</body>
+
+</html>

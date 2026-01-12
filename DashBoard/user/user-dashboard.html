@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard | BreakMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="user-dashboard.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Break<span>MS</span></h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>My Activity</a>
+      <a>Profile</a>
+      <a href="../login-user.html">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HEADER -->
+   <header class="topbar user-header">
+  <div class="user-info">
+    <h1 id="userName">User Dashboard</h1>
+    <p id="userEmail"></p>
+  </div>
+
+  <div class="header-right">
+    <div class="ist-time" id="istTime"></div>
+    <button class="logout-btn" onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+
+    <!-- STATUS CARDS -->
+    <section class="stats">
+      <div class="stat-card">
+        <h4>Current Status</h4>
+        <h2 id="statusText">Working</h2>
+      </div>
+
+      <div class="stat-card">
+        <h4>Today's Break Time</h4>
+        <h2 id="totalBreak">00:00:00</h2>
+      </div>
+
+      <div class="stat-card alert-card" id="alertCard">
+        <h4>Alert</h4>
+        <h2 id="alertText">None</h2>
+      </div>
+    </section>
+
+    <!-- BREAK TIMER -->
+    <section class="timer-section">
+      <div class="timer-card">
+        <h3>Live Break Timer</h3>
+        <div class="timer" id="breakTimer">00:00:00</div>
+
+        <div class="actions">
+          <button id="breakInBtn" class="btn start">Break In</button>
+          <button id="breakOutBtn" class="btn stop" disabled>Break Out</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script>
+  const user = JSON.parse(localStorage.getItem("userSession"));
+  if (!user) {
+    alert("Please login first");
+    window.location.href = "../login-user.html";
+  }
+</script>
+
+<script src="user-dashboard.js"></script>
+</body>
+</html>

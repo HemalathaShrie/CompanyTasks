@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login | BreakMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="admin-login.css">
+</head>
+<body>
+
+  <div class="login-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="login-left slide-in-left">
+      <h1>Welcome Admin</h1>
+      <p>
+        Monitor users, track break activity in real-time,
+        generate reports & ensure compliance.
+      </p>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="login-right slide-in-right">
+      <form class="login-card glass">
+        <h2>Admin Login</h2>
+
+        <div class="input-group">
+          <input type="text" id="username" required>
+          <label>Admin Username</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" required>
+          <label>Password</label>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+        <p class="note">Authorized personnel only</p>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="admin-login.js"></script>
+</body>
+</html>
