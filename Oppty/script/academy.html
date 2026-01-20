@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy | Oppty TechHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/academy.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+    <header class="header-main fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+
+            <div class="header-left">
+                <a href="#">
+                    <img src="https://oppty.in/wp-content/uploads/2025/07/oppty.png" alt="Oppty Logo"
+                        class="h-12 w-auto">
+                </a>
+            </div>
+
+            <div class="header-center">
+                <button id="menu-toggle" class="burger-trigger">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+            <div class="header-right flex items-center gap-3">
+                <div class="phone-box px-4 py-2 rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-phone-volume text-sm phone-icon"></i>
+                    <a href="tel:+919491209900" class="font-bold text-sm tracking-tighter">+91 9491209900</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="nav-overlay" class="nav-overlay">
+            <button id="close-menu" class="close-btn">&times;</button>
+            <ul class="nav-links-list">
+                <li><a href="/main.html">HOME</a></li>
+                <li><a href="/script/about.html">ABOUT US</a></li>
+                <li class="dropdown-item">
+                    <a href="/script/service.html" class="dropdown-trigger">SERVICES</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/script/solutions.html">SOLUTIONS</a></li>
+                    </ul>
+                <li><a href="/script/career.html">CAREERS</a></li>
+                <li><a href="/script/contact.html">CONTACT US</a></li>
+                <li><a href="/script/academy.html" class="special-link">ACADEMY</a></li>
+                <li><a href="https://www.theprocareer.com/home" class="special-link">TRAINING PARTNER</a></li>
+
+            </ul>
+        </div>
+    </header>
+
+
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="glass-overlay"></div>
+
+        <div class="circle-animation shape-1"></div>
+        <div class="circle-animation shape-2"></div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="content-box">
+                <h4 class="text-indigo-400 font-bold tracking-widest uppercase mb-4 animate-word">
+                    Empower Your Future
+                </h4>
+                <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6 text-white animate-word">
+                    Unlock Potential with <br>
+                    <span class="text-gradient">Oppty Academy</span>
+                </h1>
+                <p class="text-slate-300 text-lg mb-8 animate-word">
+                    Unlock your potential with industry-ready AI, Data Science, and tech courses designed to propel your
+                    career forward.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#courses" class="btn-primary">Explore Courses</a>
+                </div>
+            </div>
+
+            <div class="relative image-container">
+                <div class="hero-img-mask">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800"
+                        alt="Students">
+                </div>
+                <div class="floating-badge">
+                    <i class="fas fa-certificate text-yellow-400 text-3xl"></i>
+                    <div class="badge-text">
+                        <span class="iso-title">ISO</span>
+                        <span class="iso-sub">Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-indigo-900 text-white angle-path">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-8">Bridging the Gap Between <br>Aspiration & Achievement</h2>
+                <p class="text-indigo-100 text-lg leading-relaxed mb-6">
+                    Our cutting-edge training programs are crafted to align with market demands, empowering individuals
+                    and teams with the skills to lead in AI and emerging technologies.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+                    <div class="p-4 border border-indigo-400/30 rounded-lg">
+                        <i class="fas fa-chalkboard-teacher text-2xl mb-2"></i>
+                        <p class="text-sm font-bold">Mentor-Led</p>
+                    </div>
+                    <div class="p-4 border border-indigo-400/30 rounded-lg">
+                        <i class="fas fa-laptop-code text-2xl mb-2"></i>
+                        <p class="text-sm font-bold">Hybrid Model</p>
+                    </div>
+                    <div class="p-4 border border-indigo-400/30 rounded-lg">
+                        <i class="fas fa-project-diagram text-2xl mb-2"></i>
+                        <p class="text-sm font-bold">Project Based</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">Our Courses</h2>
+                <p class="text-slate-500">Industry-relevant learning tailored for the tech-driven world.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="course-mini-card c-blue" data-aos="fade-up">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Science</h3>
+                </div>
+                <div class="course-mini-card c-purple" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="course-mini-card c-orange" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Artificial Intelligence</h3>
+                </div>
+                <div class="course-mini-card c-red" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Deep Learning</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">Training Plans & Careers</h2>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="plan-box" data-aos="zoom-in">
+                    <div class="plan-header bg-blue-600">
+                        <h3>Data Science</h3>
+                        <p>Analytics + Machine Learning</p>
+                    </div>
+                    <ul class="plan-list">
+                        <li><i class="fas fa-check-circle"></i> 100-Hour Engagement</li>
+                        <li><i class="fas fa-calendar-alt"></i> 20 Weeks, 60 Sessions</li>
+                        <li><i class="fas fa-tasks"></i> 2 Mini + 1 Industry Project</li>
+                        <li><i class="fas fa-users"></i> Access to Oppty AI Community</li>
+                        <li><i class="fas fa-briefcase"></i> Internship & Job Support</li>
+                    </ul>
+                    <button class="plan-btn">Enroll Now</button>
+                </div>
+
+                <div class="plan-box" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="plan-header bg-purple-600">
+                        <h3>Artificial Intelligence</h3>
+                        <p>Advanced ML + Neural Networks</p>
+                    </div>
+                    <ul class="plan-list">
+                        <li><i class="fas fa-check-circle"></i> 120-Hour Engagement</li>
+                        <li><i class="fas fa-calendar-alt"></i> 16 Weeks, 48 Sessions</li>
+                        <li><i class="fas fa-tasks"></i> 2 Mini + 1 Industry Project</li>
+                        <li><i class="fas fa-certificate"></i> Hackathon & Certification</li>
+                        <li><i class="fas fa-briefcase"></i> Placement Support</li>
+                    </ul>
+                    <button class="plan-btn">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative" data-aos="fade-right">
+                <div class="rotated-bg-box"></div>
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800"
+                    class="rounded-2xl relative z-10 shadow-2xl" alt="Education">
+            </div>
+            <div data-aos="fade-left">
+                <h2 class="text-3xl font-bold mb-6">Hands-on Expertise</h2>
+                <p class="text-slate-600 mb-6">We focus on industry-relevant learning that combines foundational
+                    knowledge with advanced applications. Excel in a tech-driven world.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4 p-4 hover:bg-slate-50 rounded-xl transition cursor-default">
+                        <div
+                            class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <span class="font-bold">Industry Projects</span>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 hover:bg-slate-50 rounded-xl transition cursor-default">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <span class="font-bold">Job Placement Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section brand-info">
+                <img src="https://oppty.in/wp-content/uploads/2025/07/oppty.png" alt="Oppty Logo"
+                    class="footer-logo-img">
+                <p>Power up your success with innovative IT, BPO, E-commerce, Web Development, and AI solutions tailored
+                    to your vision.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="link-list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Offices</h3>
+                <div class="location-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong>Hyderabad:</strong> 108/43, Vijaya Lakshmi Enclave, PJR Enclave Rd, Hyderabad 500050</p>
+                </div>
+                <div class="location-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong>Udaipur:</strong> Plot No: 26, 100 Feet Rd, Shobhagpura, Rajasthan 313011</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@oppty.in">info@oppty.in</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919491209900">+91-9491209900</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-cert-band">
+            <div class="cert-container">
+                <img src="https://oppty.in/wp-content/uploads/2025/09/png-clipart-government-of-india-ministry-of-micro-small-and-medium-enterprises-small-business-india-text-logo__1_-removebg-preview.png"
+                    alt="MSME Logo" class="cert-logo">
+                <img src="https://oppty.in/wp-content/uploads/2025/09/Ministry-for-Corporate-AffairS-1-removebg-preview.png"
+                    alt="Ministry of Corporate Affairs" class="cert-logo">
+                <img src="https://oppty.in/wp-content/uploads/2025/09/36662669-1685562943668-bf31f5769c66e.jpg"
+                    alt="Startup India" class="cert-logo">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Oppty Solutions. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="academy.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
