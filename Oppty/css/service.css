@@ -1,119 +1,648 @@
 /* General Layout */
-.glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-.hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-.text-gradient { background: linear-gradient(to right, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-/* 1. Services Hero Background */
-.services-hero {
-    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920');
-    background-size: cover;
-    background-attachment: fixed;
+.glass-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
 }
 
-/* 2. Flying Animations */
+/* Custom Gradient using your Root Colors */
+.text-gradient {
+    background: linear-gradient(90deg, var(--gold-accent), var(--dark-green), var(--olive));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Ensure the parent section is the reference point */
+.services-hero {
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    z-index: 0;
+    /* Base level */
+}
+
+/* Base style for all shapes */
 .flying-shape {
     position: absolute;
-    background: rgba(99, 102, 241, 0.1);
     border-radius: 50%;
+    filter: blur(50px);
+    /* Reduced blur slightly to make them more visible */
     z-index: 1;
-    animation: float 10s infinite alternate ease-in-out;
+    /* Sits above the background color */
+    pointer-events: none;
+    /* Prevents shapes from interfering with clicks/buttons */
+    opacity: 0.8;
+    /* Increased opacity */
+    mix-blend-mode: screen;
 }
-.shape1 { width: 300px; height: 300px; top: -10%; left: -5%; }
-.shape2 { width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 2s; }
-.shape3 { width: 150px; height: 150px; top: 20%; right: 20%; background: rgba(168, 85, 247, 0.15); }
 
-@keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-50px) rotate(20deg); }
+/* Applying animation to all shapes */
+.shape1 {
+    width: 400px;
+    height: 400px;
+    top: -10%;
+    left: -5%;
+    background: var(--dark-green);
+    animation: floatShape 12s infinite alternate ease-in-out;
+}
+
+.shape2 {
+    width: 300px;
+    height: 300px;
+    bottom: 15%;
+    right: -5%;
+    background: var(--olive);
+    animation: floatShape 18s infinite alternate-reverse ease-in-out;
+    animation-delay: 2s;
+}
+
+.shape3 {
+    width: 280px;
+    height: 280px;
+    top: 20%;
+    right: 20%;
+    background: var(--gold-accent);
+    /* Changed to use your root gold */
+    opacity: 0.4;
+    animation: floatShape 15s infinite alternate ease-in-out;
+    animation-delay: 4s;
+}
+
+/* Standardized Keyframes for all shapes */
+@keyframes floatShape {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(30px, -40px) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(-20px, -80px) rotate(25deg);
+    }
+}
+
+/* Primary Button Hover Glow */
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(2, 135, 102, 0.6);
+    /* Using var(--dark-green) equivalent */
+    filter: brightness(1.1);
+}
+
+/* Secondary Button Hover Glow */
+.btn-secondary:hover {
+    background-color: rgba(132, 147, 74, 0.1);
+    /* Using var(--olive) alpha */
+    box-shadow: 0 0 20px rgba(244, 236, 16, 0.3);
+    /* Using var(--gold-accent) alpha */
+}
+
+/* Smooth Floating Animation for the Image */
+@keyframes imgFloat {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-img-float {
+    animation: imgFloat 6s ease-in-out infinite;
+}
+
+/* Slow spin for the decorative dashed ring */
+.animate-spin-slow {
+    animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Text Gradient Glow Effect on Hover */
+.text-gradient {
+    transition: filter 0.3s ease;
+}
+
+h1:hover .text-gradient {
+    filter: drop-shadow(0 0 10px rgba(244, 236, 16, 0.5));
+}
+
+/* Ensure content sits ABOVE the shapes */
+.services-hero .container {
+    position: relative;
+    z-index: 10;
 }
 
 /* 3. Diamond Grid Layout */
 .diamond-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 25px;
     padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
 }
+
 .diamond {
-    width: 150px;
-    height: 150px;
+    position: relative;
+    width: 100%;
     overflow: hidden;
+    aspect-ratio: 1/1;
     transform: rotate(45deg);
     border: 4px solid #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: 0.5s;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
 }
+
 .diamond img {
-    width: 140%;
-    height: 140%;
+    width: 150%;
+    height: 150%;
     object-fit: cover;
     transform: rotate(-45deg) scale(1.2);
+    transition: 0.5s ease;
+    filter: grayscale(30%);
 }
-.diamond:hover { transform: rotate(45deg) scale(1.1); z-index: 10; border-color: #6366f1; }
+
+/* ROOT COLOR BORDERS */
+.d-1 {
+    border-color: var(--dark-green);
+    margin-top: 20px;
+}
+
+.d-2 {
+    border-color: var(--gold-accent);
+}
+
+.d-3 {
+    border-color: var(--olive);
+    margin-top: -20px;
+}
+
+.d-4 {
+    border-color: var(--mid-green);
+    margin-top: -60px;
+}
+
+/* COLORFUL HOVER EFFECTS */
+.diamond:hover {
+    z-index: 20;
+    transform: rotate(45deg) scale(1.15) translateY(-10px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    /* Makes it sharp on hover */
+}
+
+.diamond:hover img {
+    filter: grayscale(0%);
+    transform: rotate(-45deg) scale(1.3);
+    /* Slight zoom on hover */
+}
+
+/* Mobile Fix for Diamond Grid */
+@media (max-width: 768px) {
+    .diamond-grid {
+        margin-top: 40px;
+        gap: 15px;
+    }
+
+    .d-4 {
+        margin-top: -30px;
+    }
+}
 
 /* 4. Colorful Service Cards */
-.service-card {
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    background: white;
+/* 1. WRAPPER FOR CENTERING & GLOW */
+.services-header-wrapper {
     position: relative;
-    transition: all 0.4s ease;
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    text-align: center;
+    overflow: visible;
 }
-.service-card .number {
+
+/* 2. BIG TITLE STYLING */
+.services-main-title {
+    position: relative;
+    z-index: 10;
+    color: var(--cream);
+    /* Massive size for "Big Center" look */
+    line-height: 0.9;
+    letter-spacing: -2px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+/* 3. THE GRADIENT TEXT EFFECT */
+.services-main-title .text-gradient {
+    background: linear-gradient(to right, var(--gold-accent), var(--dark-green), var(--olive));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* 4. BACKGROUND GLOW (Behind the Text) */
+.header-glow {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 3rem;
-    font-weight: 900;
-    opacity: 0.05;
-}
-.service-card .icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
-.service-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-
-.card-blue:hover { background: #eff6ff; border-color: #3b82f6; transform: translateY(-10px); }
-.card-blue .icon { color: #3b82f6; }
-.card-purple:hover { background: #faf5ff; border-color: #a855f7; transform: translateY(-10px); }
-.card-purple .icon { color: #a855f7; }
-.card-orange:hover { background: #fff7ed; border-color: #f97316; transform: translateY(-10px); }
-.card-orange .icon { color: #f97316; }
-.card-green:hover { background: #f0fdf4; border-color: #22c55e; transform: translateY(-10px); }
-.card-green .icon { color: #22c55e; }
-.card-red:hover { background: #fef2f2; border-color: #ef4444; transform: translateY(-10px); }
-.card-red .icon { color: #ef4444; }
-
-/* 5. Ticker Animation */
-.ticker-wrap {
-    animation: ticker 30s linear infinite;
-    white-space: nowrap;
-}
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-/* Variables for easy theme management */
-:root {
-    --primary: #007bff;
-    --accent: #00d4ff;
-    --bg-dark: #121212;
-    --bg-footer: #1a1a1a;
-    --text-main: #ffffff;
-    --text-muted: #a0a0a0;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100px;
+    background: var(--dark-green);
+    filter: blur(120px);
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* 5. HOVER ANIMATION FOR TITLE */
+.services-main-title:hover {
+    transform: scale(1.02);
+    transition: transform 0.4s ease;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+.services-main-title:hover .text-gradient {
+    filter: brightness(1.2) drop-shadow(0 0 15px var(--dark-green));
+}
+/* Update Section Background to match your Dark Theme */
+.services-section {
+    background-color: var(--bg-footer);
+    /* #1a1a1a */
+    padding: 100px 0;
+}
+
+/* Base Service Card Styling */
+.service-card {
+    position: relative;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.03);
+    /* Subtle glass look */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers the icon as requested */
+    text-align: center;
+    /* Centers the text */
+}
+
+/* Text Colors */
+.service-card h3 {
+    color: green;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 15px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card p {
+    color: #3fcb37;
+    /* Slate-300 */
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 2;
     line-height: 1.6;
 }
 
+/* Number Styling */
+.number {
+    font-size: 3rem;
+    font-weight: 900;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    opacity: 0.25;
+    color: rgb(11, 98, 45);
+    z-index: -1;
+}
+
+/* Icon & Glow logic using Root Colors */
+.icon {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+/* Specific Card Color Logic */
+.card-blue .icon {
+    color: var(--deep-brown);
+}
+
+.card-purple .icon {
+    color: var(--mid-green);
+}
+
+.card-orange .icon {
+    color: var(--olive);
+}
+
+.card-green .icon {
+    color: var(--dark-green);
+}
+
+.card-red .icon {
+    color: var(--deep-brown);
+}
+
+.card-gold .icon {
+    color: var(--gold-accent);
+}
+
+/* THE GLOW SHOW EFFECT */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08); /* Darkens background on hover */
+    border-color: rgba(255, 255, 255, 0.3);
+    transition: 0.4s;
+}
+
+/* Colorful Hover Glows */
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: transparent;
+}
+
+.card-gold:hover {
+    box-shadow: 0 10px 40px -10px rgba(244, 236, 16, 0.3);
+}
+
+.card-green:hover {
+    box-shadow: 0 10px 40px -10px rgba(2, 135, 102, 0.3);
+}
+
+.card-orange:hover {
+    box-shadow: 0 10px 40px -10px rgba(213, 243, 91, 0.3);
+}
+
+/* Animation for Icon on Hover */
+.service-card:hover .icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* 5. Ticker Animation */
+/* 1. CONTAINER SETUP */
+.ticker-container {
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+}
+
+/* 2. THE TRACK (The part that moves) */
+.ticker-track {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    animation: scrollTicker 30s linear infinite; /* Speed control here */
+}
+
+/* 3. ITEM STYLING (Big Size & Root Colors) */
+.ticker-item {
+    font-size: 4rem; /* Big Size */
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0 40px;
+    /* Gradient text using your colors */
+    background: linear-gradient(90deg, var(--gold-accent), var(--dark-green), var(--olive));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+/* 4. THE DOT SEPARATOR */
+.dot {
+    -webkit-text-fill-color: var(--deep-brown); /* Contrast dot */
+    opacity: 0.5;
+}
+
+/* 5. INFINITE LOOP ANIMATION */
+@keyframes scrollTicker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Moves by exactly half since we duplicated the text */
+        transform: translateX(-50%);
+    }
+}
+
+/* 6. HOVER EFFECT: Slow down on hover */
+/* 1. GRID CONTAINER */
+.testimonial-expand-grid {
+    display: grid;
+    /* This forces 4 equal columns on large screens */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px; /* Adjust based on your container */
+    margin: 0 auto;
+    align-items: start;
+}
+/* 2. THE CARD BASE */
+.expand-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    height: 420px; /* Fixed height for closed state */
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%; /* Ensures card fills the 1/4th grid space */
+}
+/* 3. PHOTO LAYER (Always Centered) */
+/* 3. CENTER THE CONTENT INTERNALLY */
+.photo-layer {
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+}
+
+.photo-layer img {
+    width: 140px; /* Slightly smaller to fit 4-side-by-side */
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--dark-green);
+    margin: 0 auto;
+}
+.name-tag {
+    margin-top: 25px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+}
+
+/* 4. CONTENT LAYER (Hidden initially) */
+.content-layer {
+    padding: 0 35px 40px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+    flex-grow: 1;
+}
+
+.content-layer p {
+    color: #cbd5e1; /* Slate-300 */
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.role-tag {
+    color: var(--gold-accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+}
+
+/* 4. HOVER REVEAL */
+.expand-card:hover {
+    height: 720px; /* Wraps open to show 7 lines of text */
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--dark-green);
+    z-index: 10; /* Keeps the expanded card on top of others */
+}
+
+.expand-card:hover .photo-layer {
+    height: 200px;
+}
+
+.expand-card:hover .photo-layer img {
+    width: 80px;
+    height: 80px;
+}
+
+.content-layer {
+    padding: 0 20px 30px; /* Reduced padding to fit 4 cards */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.expand-card:hover .content-layer {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 5. RESPONSIVE: Stack them only on mobile */
+@media (max-width: 1024px) {
+    .testimonial-expand-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2x2 on tablets */
+    }
+}
+
+@media (max-width: 640px) {
+    .testimonial-expand-grid {
+        grid-template-columns: 1fr; /* 1x4 on mobile */
+    }
+}
+/* 1. THE CTA BUTTON */
+.cta-button {
+    background: var(--dark-green);
+    color: var(--cream);
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: var(--mid-green);
+    box-shadow: 0 15px 30px rgba(2, 135, 102, 0.4);
+}
+
+/* 2. FEATURE MINI-GRID */
+.cta-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--gold-accent);
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.cta-feature:hover .cta-icon-box {
+    background: var(--dark-green);
+    color: var(--cream);
+    transform: rotateY(180deg);
+}
+
+/* 3. GRADIENT TEXT REUSE */
+.text-gradient {
+    background: linear-gradient(to right, var(--gold-accent), var(--dark-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
 /* Footer Container */
 .footer {
     background-color: var(--bg-footer);
@@ -187,7 +716,8 @@ body {
 }
 
 /* Contact & Locations */
-.location-item, .contact-item {
+.location-item,
+.contact-item {
     display: flex;
     gap: 12px;
     margin-bottom: 15px;
@@ -195,7 +725,8 @@ body {
     color: var(--text-muted);
 }
 
-.location-item i, .contact-item i {
+.location-item i,
+.contact-item i {
     color: var(--primary);
     margin-top: 4px;
 }
@@ -258,16 +789,21 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
+
     .footer-section h3::after {
         left: 50%;
         margin-left: -15px;
     }
-    .location-item, .contact-item {
+
+    .location-item,
+    .contact-item {
         justify-content: center;
     }
+
     .social-icons {
         justify-content: center;
     }
+
     .link-list a:hover {
         transform: scale(1.1);
     }

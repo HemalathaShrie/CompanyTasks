@@ -1,21 +1,626 @@
-/* Glassmorphism for Navbar */
-.glass-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+
+:root {
+  --dark-green: #028766;
+  --mid-green: #4a755d;
+  --olive: #84934A;
+  --cream: #ECECEC;
+  --deep-brown: #492828;
+  --gold-accent: #f4ec10;
 }
 
-/* Wipro-style Hero Gradient */
-.hero-gradient {
-    background: linear-gradient(135deg, #0a0f1d 0%, #1e293b 100%);
+.hero-video {
+  position: relative;
+  min-height: 90vh;
 }
 
-/* Text Gradient Effect */
+/* Video */
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Overlay for readability */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(5, 13, 10, 0.75),
+    rgba(5, 13, 10, 0.85)
+  );
+  z-index: 2;
+}
+
+/* Text always above video */
+.hero-video .container {
+  position: relative;
+  z-index: 3;
+}
+
 .text-gradient {
-    background: linear-gradient(to right, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    90deg,
+    var(--gold-accent),
+    var(--olive),
+    var(--dark-green)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-rotator {
+    position:relative;
+    z-index: 3;
+  margin-top: 40px;
+  min-height: 110px;
 }
 
+.hero-rotator-item {
+  opacity: 0;
+  transform: translateY(20px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: all 0.8s ease;
+}
+
+.hero-rotator-item.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+.hero-title {
+  font-size: 3rem; /* same as text-5xl */
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem; /* gap between H and P */
+}
+
+.hero-desc {
+  max-width: 620px; /* controls 3–4 line width */
+  margin: 0 auto 2rem; /* center + space after P */
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+}
+
+.hero-icon {
+  font-size: 4.2rem;
+  color: var(--gold-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* subtle premium motion */
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+/* ==== GLOW SHAPES ==== */
+.glow-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+}
+
+.glow-green {
+  width: 380px;
+  height: 380px;
+  background: var(--dark-green);
+  top: 10%;
+  left: -150px;
+}
+
+.glow-gold {
+  width: 280px;
+  height: 280px;
+  background: var(--gold-accent);
+  bottom: 15%;
+  right: -120px;
+}
+
+/* ==== TEXT GRADIENT ==== */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--gold-accent),
+    var(--olive),
+    var(--dark-green)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==== DIAMOND GRID ==== */
+.diamond-grid {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+.diamond-card {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.diamond-card h3,
+.diamond-card p {
+  transform: rotate(-45deg);
+}
+
+.diamond-card h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark-green);
+}
+
+.diamond-card p {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+/* center */
+.diamond-card.main {
+  width: 150px;
+  height: 150px;
+  top: 85px;
+  left: 85px;
+  z-index: 2;
+}
+
+/* surrounding */
+.diamond-card:nth-child(2) { top: 0; left: 85px; }
+.diamond-card:nth-child(3) { top: 85px; left: 0; }
+.diamond-card:nth-child(4) { top: 170px; left: 85px; }
+
+/* ==== INFINITE TICKER ==== */
+.ticker-xl {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #eef2ff;
+  border-top: 1px solid #c7d2fe;
+  border-bottom: 1px solid #c7d2fe;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: tickerMove 25s linear infinite;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #4338ca;
+  padding: 30px 0;
+}
+
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+/********  image and content section   *******/
+.alt-row {
+  position: relative;
+  overflow:visible;
+}
+
+.glow-bg {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-green { background: var(--dark-green); }
+.glow-gold  { background: var(--gold-accent); }
+.glow-olive { background: var(--olive); }
+
+.content-box,
+.image-box {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  
+}
+.image-box {
+  position: relative;
+    z-index: 2;
+    height: 100%;
+    /* Initial tilt as requested in your original code */
+    transform: rotate(-4deg); 
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+}
+
+.image-box:hover {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+    box-shadow: -15px -15px 40px rgba(0, 0, 0, 0.2); /* Shadow moves Top-Left */
+}
+
+
+.content-box {
+  background: #fff;
+  padding: 48px;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s ease;
+    /* This ensures the image cuts at the corner on hover */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+/* Adding the "Folded Paper" corner triangle */
+.image-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    background: linear-gradient(135deg, #f0f0f0 50%, #d4af37 50%);
+    border-radius: 0 0 1.25rem 0;
+    transition: all 0.6s ease;
+    z-index: 3;
+}
+
+.image-box:hover::after {
+    /* Creates the 45-degree fold appearance */
+    width: 50px;
+    height: 50px;
+    box-shadow: -5px -5px 15px rgba(0,0,0,0.1);
+}
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+   padding-left: 4rem;
+  padding-right: 4rem;
+}
+.fancy-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--dark-green), var(--gold-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 991px) {
+    .section-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 2rem;
+        padding: 0 20px;
+    }
+    .image-box { transform: rotate(0); }
+}
+/******* WHY CHOOSE SECTION STYLE   *******/
+/* Animated gradient heading */
+.why-title {
+  font-size: 42px;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--gold-accent),
+    var(--olive),
+    var(--dark-green),
+    var(--gold-accent)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Capsule Card */
+.capsule-card {
+  position: relative;
+  background: #efc7ff;
+  border-radius: 999px;
+  padding: 48px 32px;
+  height: 420px;
+  overflow: hidden;
+  
+  border: 4px solid transparent;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.capsule-card:hover {
+  height: 520px;
+  transform: translateY(-12px);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.18);
+}
+.border-green { border-color: var(--dark-green); }
+.border-gold  { border-color: var(--gold-accent); }
+.border-olive { border-color: var(--olive); }
+.border-brown { border-color: var(--deep-brown); }
+/* Icon */
+.capsule-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  color: var(--dark-green);
+  transition: transform 0.5s ease;
+}
+
+.capsule-card:hover .capsule-icon {
+  transform: scale(1.2);
+}
+
+/* Gradient heading */
+.capsule-title {
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  background: linear-gradient(
+    90deg,
+    var(--gold-accent),
+    var(--olive),
+    var(--dark-green)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.capsule-content p{
+    color:var(--dark-green);
+    font-size: larger;
+    font-weight: 400px;
+}
+/* Hidden content */
+.capsule-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.capsule-card:hover .capsule-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/****GROWTH SECTION STYLE *****/
+/* Gradient background using root colors */
+.bg-vision {
+  background: linear-gradient(
+    135deg,
+    var(--dark-green),
+    var(--olive),
+    var(--deep-brown)
+  );
+}
+
+/* Video */
+.vision-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+/* Dark overlay for contrast */
+.vision-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: 1;
+}
+
+/* Gradient text reuse */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--gold-accent),
+    var(--olive),
+    var(--dark-green)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/******  Trstmonial section style ******/
+/* 1. SECTION & VIDEO BACKGROUND SETUP */
+.testimonial-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  object-fit: cover;
+}
+
+.testvideo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: -1;
+}
+
+/* 2. CONTENT WRAPPER */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.testimonial-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 60px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* 3. GRID LAYOUT: 3 COLUMNS, 2 ROWS */
+.testimonial-single-row {
+  display: grid;
+  /* This creates 3 equal columns */
+  grid-template-columns: repeat(3, 1fr); 
+  /* This creates the vertical gap between row 1 and row 2 */
+  row-gap: 150px; 
+  column-gap: 40px;
+  width: 100%;
+  justify-items: center; /* Centers the pairs in their grid spot */
+}
+
+/* 4. PAIR GROUPING */
+.testimonial-pair {
+  display: flex;
+  position: relative;
+  width: 380px; /* Constrained width to prevent left-side cutoff */
+  height: 450px; /* Gives space for the downward overlap card */
+}
+
+/* 5. CARD BASE STYLING */
+.testimonial-card {
+  position: relative;
+  width: 260px;
+  height: auto;
+  padding: 35px 25px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 3px solid transparent;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* THE OVERLAP LOGIC (Second card) */
+.testimonial-card.overlap {
+  position: absolute;
+  /* Shifts the card to the right and down relative to the first card */
+  left: 120px; 
+  top: 100px;
+  z-index: 2;
+}
+
+/* 6. HOVER EFFECTS */
+.testimonial-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  z-index: 50 !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* 7. SOCIAL SLIDE (Right to Left) */
+.social-slide {
+  position: absolute;
+  top: 30px;
+  right: -80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.4s ease-in-out;
+}
+
+.testimonial-card:hover .social-slide {
+  right: 20px;
+}
+
+.social-slide a {
+  width: 40px;
+  height: 40px;
+  background: #222;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* 8. BORDER COLORS */
+.glow-red { border-color: #ff4d4d; }
+.glow-green { border-color: #2ecc71; }
+.glow-maroon { border-color: #800000; }
+.glow-blue { border-color: #3498db; }
+.glow-purple { border-color: #9b59b6; }
+.glow-brown { border-color: #a0522d; }
+
+/* 9. CLIENT DETAILS */
+.client-img { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; }
+.client-img img { width: 100%; height: 100%; object-fit: cover; }
+.testimonial-text { font-size: 14px; color: #444; font-style: italic; margin-bottom: 15px; }
+.client-info h4 { font-weight: 800; margin: 0; font-size: 17px; }
+
+/* 10. RESPONSIVE DESIGN */
+@media (max-width: 1100px) {
+  .testimonial-single-row {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-single-row {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
 /* Moving Ticker Animation */
 .ticker-wrap {
     overflow: hidden;
@@ -51,26 +656,6 @@ html {
     scroll-behavior: smooth;
 }
 /* Variables for easy theme management */
-:root {
-    --primary: #007bff;
-    --accent: #00d4ff;
-    --bg-dark: #121212;
-    --bg-footer: #1a1a1a;
-    --text-main: #ffffff;
-    --text-muted: #a0a0a0;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
-}
 
 /* Footer Container */
 .footer {

@@ -1,441 +1,764 @@
+/* HERO VIDEO */
 .hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 700px;
-    overflow: hidden;
-    /* This ensures space for the fixed header */
-    margin-top: 0; 
-    padding-top: 100px; /* Space for header */
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Remove any potential gaps */
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  /* Fallback color */
 }
 
-/* Ensure background is truly background */
-.bg-slideshow {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-}
-
-.bg-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-}
-
-.bg-slide.active {
-    opacity: 1 !important;
-}
-
-/* Content Container */
-.hero-inner {
-    position: relative;
-    z-index: 10;
-    max-width: 1400px;
-    margin: 0 auto;
-    height: calc(100% - 100px);
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-}
-
-/* Fix for Hidden Text on other slides */
-.slide-content {
-    display: none; /* Hide all by default */
-    animation: fadeUp 0.8s forwards;
-}
-
-.slide-content.active {
-    display: block; /* Show only active */
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
-
-body { 
-  font-family: system-ui, sans-serif; 
-  background: #f8fafc; 
-  padding: 4rem 1rem; 
-  min-height: 200vh; /* Extra height for scroll demo */
-}
-
-.stats-container {
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 3rem 1.5rem; 
-  background: white; 
-  border-radius: 1.5rem; 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
-  position: relative; 
-  z-index: 10;
-}
-
-.stats-grid {
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-  gap: 2rem; 
-  text-align: center;
-}
-
-.stat-card {
-  position: relative; 
-  padding: 2.5rem 1rem; 
-  opacity: 0; 
-  transform: translateY(50px); 
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.stat-card.animate { 
-  opacity: 1; 
-  transform: translateY(0); 
-}
-
-/* Staggered delays matching original AOS */
-.stat-card[data-aos-delay="100"] { transition-delay: 0.1s; }
-.stat-card[data-aos-delay="200"] { transition-delay: 0.2s; }
-.stat-card[data-aos-delay="300"] { transition-delay: 0.3s; }
-.stat-card[data-aos-delay="400"] { transition-delay: 0.4s; }
-
-/* SVG Circle Background */
-.svg-circle {
-  position: absolute; 
-  top: -1rem; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  width: 120px; 
-  height: 120px; 
-  z-index: 0;
-}
-
-.svg-circle circle { 
-  fill: none; 
-  stroke-width: 4; 
-  stroke-linecap: round; 
-  stroke-dasharray: 0 157; 
-  stroke-dashoffset: 0; 
-  transform: rotate(-90deg); 
-  transform-origin: 50% 50%; 
-  transition: stroke-dasharray 2s ease-out; 
-}
-
-.stat-card.animate .svg-circle circle { 
-  stroke-dasharray: 157 157; /* Full circle fill on animate */
-}
-
-/* Colorful gradient stroke variations */
-.card-1 .svg-circle circle { stroke: url(#grad1); }
-.card-2 .svg-circle circle { stroke: url(#grad2); }
-.card-3 .svg-circle circle { stroke: url(#grad3); }
-.card-4 .svg-circle circle { stroke: url(#grad4); }
-
-/* Animated gradient border hover */
-.stat-card {
-  border: 3px solid transparent; 
-  border-radius: 1.5rem; 
-  background: linear-gradient(white, white) padding-box,
-              conic-gradient(from 0deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #ff6b6b) border-box;
-  background-size: 100% 100%, 100% 100%; 
-  transition: all 0.3s ease; 
-  overflow: hidden; 
+#heroVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensures video fills screen without stretching */
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
+/* The Mask Over the Video */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Gradient mask: darker on edges, slightly clearer in center */
+  background: radial-gradient(circle, rgba(47, 82, 73, 0.4) 0%, rgba(26, 26, 26, 0.8) 100%);
+  z-index: 2;
+  /* Middle layer */
+}
+
+.z-index-1 {
+  position: relative;
+  z-index: 3;
+  /* Places text above the video and the mask */
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 3;
+  /* Highest layer - puts text on top */
+}
+
+/* Fix for potential Bootstrap padding/margin issues */
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+h1.display-1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  /* Responsive font sizing */
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* Base Slide Styles */
+.hero-slide {
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+
+.hero-slide.active {
+  display: block;
+}
+
+/* Individual Element Animations */
+.anim-item-1,
+.anim-item-2,
+.anim-item-3 {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-slide.active .anim-item-1 {
+  animation: staggerFadeUp 0.8s ease forwards 0.2s;
+  /* Starts at 0.2s */
+}
+
+.hero-slide.active .anim-item-2 {
+  animation: staggerFadeUp 0.8s ease forwards 0.6s;
+  /* Starts at 0.6s */
+}
+
+.hero-slide.active .anim-item-3 {
+  animation: staggerFadeUp 0.8s ease forwards 1.0s;
+  /* Starts at 1.0s */
+}
+
+@keyframes staggerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*****ABOUT SECTION   ******/
+/* --- 1. Light Bouncing Heading Effect --- */
+.light-bounce {
+  position: relative;
+  display: inline-block;
+  animation: bounceSlow 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(227, 222, 97, 0.2);
+}
+
+.light-bounce::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: lightSweep 4s infinite;
+}
+
+@keyframes bounceSlow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes lightSweep {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+/* --- 2. Curved Point Boxes (40-degree effect) --- */
+.curved-point-box {
+  background: var(--mid-green);
+  margin-bottom: 20px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* The 40-degree curved rectangle effect */
+  border-radius: 50px 5px 50px 5px;
+  border: 1px solid var(--olive);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.curved-point-box:hover {
+  transform: translateX(15px) scale(1.02);
+  background: var(--deep-brown);
+  border-color: var(--gold-accent);
+  box-shadow: -15px 15px 30px rgba(227, 222, 97, 0.2);
+}
+
+/* --- 3. SVG/Icon Styling --- */
+.point-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--gold-accent);
+  color: var(--dark-green);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.curved-point-box:hover .point-icon {
+  transform: rotate(360deg);
+  background: var(--cream);
+}
+
+/* ANGLE CARDS */
+.angle-card {
+  position: relative;
+  transform: rotate(-3deg);
+  transition: 0.5s;
+  border: 5px solid var(--gold-accent);
+}
+
+.angle-card:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 40px var(--gold-accent);
+}
+
+/* STAT CARDS */
+.stat-card {
+  background: var(--deep-brown);
+  border: 2px solid var(--olive);
+  border-radius: 20px;
+  transition: 0.4s ease-in-out;
+}
+
 .stat-card:hover {
-  transform: scale(1.05) translateY(-10px); 
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-  background: linear-gradient(white, white) padding-box, 
-              conic-gradient(from var(--angle, 0deg), #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #ff6b6b) border-box !important;
-  animation: rotate 3s linear infinite paused;
+  background: var(--mid-green);
+  border-color: var(--gold-accent);
+  transform: translateY(-15px);
 }
 
-.stat-card:hover { 
-  animation-play-state: running; 
+.py-100 {
+  padding: 100px 0;
 }
 
-@keyframes rotate { 
-  to { --angle: 360deg; } 
-}
-
-.stat-number {
-  font-size: 3rem; 
-  font-weight: 800; 
-  font-family: 'Arial Black', sans-serif; 
-  line-height: 1; 
-  margin-bottom: 0.5rem; 
-  z-index: 2; 
+.z-index-2 {
+  z-index: 2;
   position: relative;
 }
 
-.stat-label { 
-  color: slategray; 
-  font-size: 1.1rem; 
-  font-weight: 500; 
+
+/* SECTION 2: ANGLE CARDS */
+.angle-card-wrapper {
+  perspective: 1000px;
 }
 
-/* Responsive */
-@media (max-width: 768px) { 
-  .stats-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1.5rem; 
-  } 
-  .stat-number { 
-    font-size: 2.5rem; 
-  } 
-}
-.transform-section {
-    padding: 120px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-    overflow: hidden;
-    position: relative;
+.angle-card-inner {
+  position: relative;
+  transform: rotateY(-10px) rotateX(5deg);
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
+  border: 4px solid var(--olive);
 }
 
-.transform-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
-    animation: glow-line 3s ease-in-out infinite;
+.angle-card-inner:hover {
+  transform: rotateY(0) rotateX(0) scale(1.02);
+  border-color: var(--gold-accent);
 }
 
-@keyframes glow-line {
-    0%, 100% { opacity: 0.3; transform: scaleX(0); }
-    50% { opacity: 1; transform: scaleX(1); }
+.angle-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(transparent, var(--deep-brown));
 }
 
-/* CENTER HEADING ANIMATION */
-.section-header {
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
+.icon-box {
+  min-width: 50px;
+  height: 50px;
+  background: var(--deep-brown);
+  border: 1px solid var(--gold-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.2rem;
 }
 
-.title-wrapper {
-    display: inline-block;
-    padding: 20px 40px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 24px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(50px) scale(0.8);
-    animation: titleFloat 2s ease-out 0.5s forwards;
+/* **** why choose section **** */
+/* ================= HEXAGON GRID ================= */
+/* --- GRID CONTAINER --- */
+.hexagon-grid {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 700px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes titleFloat {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* ORBIT */
+.orbit-circle {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  border: 2px solid rgba(227, 222, 97, 0.35);
+  box-shadow: 0 0 40px rgba(227, 222, 97, 0.35);
+  z-index: 1;
 }
 
-.main-title {
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 900;
-    background: linear-gradient(45deg, #1e293b, #334155, #475569);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0 0 10px 0;
-    line-height: 1.1;
+/* WRAPPER */
+.hex-wrapper {
+  position: absolute;
+  width: 220px;
+  height: 200px;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  transition: all 0.3s ease;
 }
 
-.title-glow {
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    color: #64748b;
-    font-weight: 500;
-    display: block;
+/* CENTER */
+.hex-center {
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
-/* 2x2 GRID LAYOUT */
-.steps-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
+/* --- THE OUTER FLOWER SHAPE (Gap Fix) --- */
+/* The Y-axis uses ~150% for vertical and ~100% for diagonal offsets */
+.h1 {
+  transform: translate(-50%, -152%);
 }
 
-.grid-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
+/* Directly Top */
+.h2 {
+  transform: translate(26%, -101%);
 }
 
-.top-row { margin-bottom: 40px; }
-.bottom-row { margin-bottom: 0; }
+/* Top Right */
+.h3 {
+  transform: translate(26%, 1%);
+}
 
-/* STEP CARDS */
-.step-card {
-    background: white;
-    border-radius: 24px;
+/* Bottom Right */
+.h4 {
+  transform: translate(-50%, 52%);
+}
+
+/* Directly Bottom */
+.h5 {
+  transform: translate(-126%, 1%);
+}
+
+/* Bottom Left */
+.h6 {
+  transform: translate(-126%, -101%);
+}
+
+/* Top Left */
+/* ================= HEX CARD ================= */
+.hex-card {
+  width: 100%;
+  height: 100%;
+  background: var(--gold-accent);
+  clip-path: polygon(25% 0%, 75% 0%,
+      100% 50%,
+      75% 100%, 25% 100%,
+      0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.hex-inner {
+  width: 94%;
+  height: 94%;
+  background: #2a1d16;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+/* ICON */
+.hex-inner i {
+  color: var(--gold-accent);
+}
+
+/* CENTER IMAGE */
+.center-piece img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inherit;
+}
+
+/* HOVER */
+.hex-wrapper:hover {
+  z-index: 50 !important;
+}
+
+.hex-wrapper:hover .hex-card {
+  transform: scale(1.12);
+  background: #fff;
+  filter: drop-shadow(0 0 25px var(--gold-accent));
+}
+
+.hex-wrapper:hover .hex-inner {
+  background: var(--dark-green);
+}
+
+/*****  HOW TO GROW SECTION   *****/
+/* --- SECTION STYLING --- */
+.growth-section {
+  position: relative;
+  padding: 100px 0;
+  min-height: 800px;
+  overflow: hidden;
+  background: transparent;
+  /* Fallback */
+}
+
+/* --- VIDEO BACKGROUND --- */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#bg-video {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensures video fills screen without stretching */
+  transform: translate(-50%, -50%);
+  z-index: -
+  1;
+}
+
+/* Fix the overlay name and styling */
+.video-overplay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Tint to make text readable */
+  z-index: -1;
+}
+
+/* --- GLASS CARDS --- */
+.z-index-2 {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* --- SOLID RECTANGLE CARDS --- */
+.solid-glass-card {
+    background: rgba(34, 74, 40, 0.85); /* Solid dark background */
+    backdrop-filter: blur(10px);
+    border: 2px solid #d4af37; /* Solid gold border */
     padding: 40px 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(60px) scale(0.9);
-    cursor: pointer;
+    border-radius: 5px; /* Sharp rectangle corners */
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(140, 140, 138, 0.9); /* Deep shadow */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 10;
 }
 
-.step-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
+.solid-glass-card:hover {
+    transform: scale(1.03);
+    background: rgba(20, 20, 20, 0.95);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); /* Gold glow on hover */
+    border-color: #fff; /* White border flash on hover */
+}
+
+.step-num {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    display: block;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.text-cream {
+    color: #f5f5dc;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/******WHY CHOOSE PICTURES SECTION *****/
+/* --- REVEAL CARD STYLING --- */
+.reveal-card {
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: #000;
+    cursor: pointer;
+}
+
+.reveal-inner {
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #8b5cf6, #ec4899, transparent);
-    transition: left 0.6s ease;
-}
-
-.step-card:hover::before {
-    left: 100%;
-}
-
-.step-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-    border-color: #8b5cf6;
-}
-
-/* ICONS */
-.card-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 25px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* THE IMAGE: Shrinks on hover */
+.reveal-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.6);
+}
+
+.reveal-card:hover .reveal-inner img {
+    transform: scale(0.85); /* The "Shrink" effect */
+    filter: brightness(0.3) blur(2px);
+}
+
+/* THE CONTENT Overlay */
+.reveal-content {
     position: relative;
     z-index: 2;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
 }
 
-.card-icon i {
-    font-size: 2rem;
-    color: white;
+.reveal-content h4 {
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.discover-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-.strategy-icon { background: linear-gradient(135deg, #10b981, #059669); }
-.implement-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.optimize-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-.scale-icon { background: linear-gradient(135deg, #ec4899, #be185d); }
-
-.step-card:hover .card-icon {
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
-
-.card-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.step-number {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #64748b;
-    margin-bottom: 12px;
+/* THE PARAGRAPH: Hidden initially */
+.reveal-content p {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.4s ease 0.2s;
+    transition: all 0.4s ease;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-.step-card.animate .step-number {
+/* HOVER STATE: Show text and lift Heading */
+.reveal-card:hover .reveal-content p {
     opacity: 1;
     transform: translateY(0);
 }
 
-h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 16px;
-    line-height: 1.3;
+.reveal-card:hover .reveal-content h4 {
+    transform: translateY(-10px);
 }
 
-p {
-    color: #64748b;
-    line-height: 1.6;
-    font-size: 0.95rem;
+/* Added border glow on hover */
+.reveal-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid #d4af37;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 3;
+    pointer-events: none;
 }
 
-/* FULL WIDTH STEP 5 */
-.full-width-card {
-    grid-column: 1 / -1;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
-    color: white;
+.reveal-card:hover::before {
+    opacity: 1;
+    inset: 15px; /* Aligns with the shrunk image */
+}
+
+
+/*  COMPANY LOGOS*/
+/* --- LOGO WRAPPER (The Circle) --- */
+.logo-item {
+    width: 180px; /* Adjusted size for circles */
+    height: 180px;
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Makes it a circle */
+    background: rgba(212, 175, 55, 0.3); /* Very subtle background */
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Thin gold border */
+    transition: all 0.5s ease;
+    
+    /* THE GLOW EFFECT */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1), 
+                inset 0 0 10px rgba(212, 175, 55, 0.05);
+}
+
+/* --- THE LOGO IMAGE --- */
+.logo-item img {
+    max-width: 70%; /* Keeps logo inside the circle padding */
+    height: auto;
+    filter: grayscale(100%) brightness(1.2); /* Matches your professional theme */
+    transition: all 0.5s ease;
+    border-radius: 50%;
+}
+
+/* --- HOVER EFFECT --- */
+.logo-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #d4af37; /* Bright gold on hover */
+    
+    /* INTENSE GLOW ON HOVER */
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 
+                0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%) brightness(1); /* Logo returns to original color */
+}
+
+/* --- ADJUST SLIDER TRACK FOR CIRCLES --- */
+.logo-track {
+    display: flex;
+    width: calc(240px * 18); /* Total width: (width + margin) * total logos */
+    animation: logoScroll 50s linear infinite; /* Very slow movement */
+}
+
+@keyframes logoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-240px * 9)); } /* Moves half the track (9 logos) */
+} 
+/****** COURSE NAMES ******/
+.service-stream-section {
+    background: #0b1a13; /* Deep dark green matching your theme */
+    padding: 25px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.stream-container {
+    display: flex;
+    white-space: nowrap;
+}
+
+.stream-track {
+    display: flex;
+    align-items: center;
+    animation: namesLeft 30s linear infinite;
+}
+
+/* --- THE TEXT STYLE --- */
+.stream-item {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 40px;
+    color: rgba(212, 175, 55, 0.3); /* Dimmed gold base */
+    position: relative;
+    
+    /* THE "CURRENT" PASSING EFFECT ON TEXT */
+    background: linear-gradient(90deg, transparent, #d4af37, #fff, #d4af37, transparent);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: currentPass 4s linear infinite;
+}
+
+/* --- THE GLOWING DOTS --- */
+.stream-dot {
+    width: 8px;
+    height: 8px;
+    background: #d4af37;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* --- ANIMATIONS --- */
+
+/* Infinite Scroll */
+@keyframes namesLeft {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Current Passing Light */
+@keyframes currentPass {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Dot Pulse */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 25px #d4af37; }
+}
+
+/* Pause on Hover */
+.stream-container:hover .stream-track {
+    animation-play-state: paused;
+}
+/* Pillar Shapes */
+.value-pillar {
+    width: 140px;
+    height: 300px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 100px; /* Capsule Shape */
+}
+.value-pillar:hover {
+    background: rgba(212, 175, 55, 0.15);
+    transform: translateY(-20px);
+}
+
+/* Diamond Shapes */
+.diamond-card {
+    width: 180px;
+    height: 180px;
+    background: #0b1a13;
+    border: 2px solid #d4af37;
+    transform: rotate(45deg); /* Creates the Diamond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+}
+.diamond-inner {
+    transform: rotate(-45deg); /* Counter-rotate text so it's readable */
     text-align: center;
 }
 
-.full-width-card .step-number,
-.full-width-card h3,
-.full-width-card p {
-    color: rgba(255,255,255,0.95);
+/* Glass Slabs */
+.glass-slab {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-left: 5px solid #d4af37; /* Gold accent bar */
+    border-radius: 0 15px 15px 0;
+    transition: 0.3s;
+}
+.glass-slab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(10px);
 }
 
-.full-width-card:hover {
-    transform: translateY(-12px) scale(1.01);
-    box-shadow: 0 35px 90px rgba(139,92,246,0.4);
-}
-
-.full-width-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* PAGE LOAD ANIMATIONS */
-@keyframes slideUpFade {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.animate-delay-1 { animation: slideUpFade 0.8s ease-out 0.3s forwards; }
-.animate-delay-2 { animation: slideUpFade 0.8s ease-out 0.5s forwards; }
-.animate-delay-3 { animation: slideUpFade 0.8s ease-out 0.7s forwards; }
-.animate-delay-4 { animation: slideUpFade 0.8s ease-out 0.9s forwards; }
-.animate-delay-5 { animation: slideUpFade 0.8s ease-out 1.1s forwards; }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .grid-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .full-width-card {
-        grid-column: 1;
-    }
-    
-    .transform-section {
-        padding: 80px 20px;
-    }
-    
-    .main-title {
-        font-size: 2rem !important;
-    }
+/* Orbit Glow */
+.glow-border {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.5);
 }
