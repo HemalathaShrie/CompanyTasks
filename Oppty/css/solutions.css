@@ -333,3 +333,21 @@ p {
     .icon { font-size: 4em; }
     .section { padding: 60px 15px; min-height: 80vh; }
 }
+
+:root {
+    --solution-emerald: #022c22;
+    --solution-gold: #fbbf24;
+    --glass-border: rgba(251, 191, 36, 0.2);
+}
+
+.solution-card-alt {
+    background: linear-gradient(135deg, rgba(2, 44, 34, 0.8) 0%, rgba(1, 15, 12, 0.95) 100%);
+    border-left: 4px solid var(--solution-gold);
+    transition: all 0.4s ease-in-out;
+}
+
+.solution-card-alt:hover {
+    transform: translateX(10px);
+    background: rgba(251, 191, 36, 0.05);
+    border-left: 4px solid #ffffff;
+}

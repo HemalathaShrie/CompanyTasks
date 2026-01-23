@@ -87,182 +87,233 @@ input:checked + .slider:before { transform: translateX(26px); }
 .slider.round { border-radius: 34px; }
 .slider.round:before { border-radius: 50%; }
 /* Variables for easy theme management */
-:root {
-    --primary: #007bff;
-    --accent: #00d4ff;
-    --bg-dark: #121212;
-    --bg-footer: #1a1a1a;
-    --text-main: #ffffff;
-    --text-muted: #a0a0a0;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.partner-logo-wrapper {
+    filter: grayscale(100%) brightness(200%); /* Makes them white/silver to match dark theme */
+    opacity: 0.6;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.partner-logo-wrapper:hover {
+    filter: grayscale(0%) brightness(100%); /* Returns to full color */
+    opacity: 1;
+    transform: scale(1.15); /* Slight pop out effect */
+    /* Adds a subtle glow based on your root colors */
+    drop-shadow: 0 0 20px rgba(99, 102, 241, 0.4); 
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
+/* Adjusting specifically for images to ensure they don't look blurry when scaled */
+.partner-logo-wrapper img {
+    object-fit: contain;
+    width: auto;
+}
+/* Base Transitions */
+.icon-box-item {
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Footer Container */
-.footer {
-    background-color: var(--bg-footer);
-    color: var(--text-main);
-    padding: 70px 0 30px;
+/* 1. Indigo Hover State */
+.step-indigo:hover .icon-box-item {
+    background: #6366f1 !important;
+    color: white !important;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+    transform: translateY(-10px) rotate(5deg);
 }
+.step-indigo:hover .step-title { color: #818cf8 !important; }
+.step-indigo:hover .step-desc { color: #c7d2fe !important; }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 25px;
-    display: grid;
-    grid-template-columns: 1.5fr 0.8fr 1.2fr 1fr;
-    gap: 40px;
+/* 2. Green Hover State */
+.step-green:hover .icon-box-item {
+    background: #22c55e !important;
+    color: white !important;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+    transform: translateY(-10px) rotate(5deg);
 }
+.step-green:hover .step-title { color: #4ade80 !important; }
+.step-green:hover .step-desc { color: #bbf7d0 !important; }
 
-/* Section Headings */
-.footer-section h3 {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    font-weight: 600;
-    position: relative;
+/* 3. Purple Hover State */
+.step-purple:hover .icon-box-item {
+    background: #a855f7 !important;
+    color: white !important;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+    transform: translateY(-10px) rotate(5deg);
 }
+.step-purple:hover .step-title { color: #c084fc !important; }
+.step-purple:hover .step-desc { color: #e9d5ff !important; }
 
-.footer-section h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 30px;
-    height: 2px;
-    background: var(--primary);
+/* 4. Blue Hover State */
+.step-blue:hover .icon-box-item {
+    background: #3b82f6 !important;
+    color: white !important;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    transform: translateY(-10px) rotate(5deg);
 }
-
-/* Logo & Text */
-.footer-logo {
-    font-size: 28px;
-    font-weight: 800;
-    margin-bottom: 15px;
-    background: linear-gradient(45deg, var(--primary), var(--accent));
+.step-blue:hover .step-title { color: #60a5fa !important; }
+.step-blue:hover .step-desc { color: #dbeafe !important; }
+/* Gold Gradient Text */
+.text-gold-gradient {
+    background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #a16207 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.brand-info p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 20px;
+/* Premium Card Style */
+.location-card-premium {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(234, 179, 8, 0.15);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(12px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Navigation Links */
-.link-list {
-    list-style: none;
+.location-card-premium:hover {
+    transform: translateY(-10px);
+    border-color: rgba(234, 179, 8, 0.5);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(234, 179, 8, 0.2);
 }
 
-.link-list li {
-    margin-bottom: 12px;
+/* Metallic City Tag */
+.city-tag-gold {
+    background: linear-gradient(135deg, #eab308, #a16207);
+    color: #041a19;
+    padding: 6px 20px;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
 }
 
-.link-list a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: var(--transition);
-    display: inline-block;
+/* Decorative Gold Shine Effect on Hover */
+.location-card-premium::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(234, 179, 8, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.8s;
+    pointer-events: none;
 }
 
-/* Hover Animation: Link slide */
-.link-list a:hover {
-    color: var(--accent);
-    transform: translateX(8px);
+.location-card-premium:hover::after {
+    left: 100%;
+}
+/* Custom Premium Inputs */
+.premium-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-/* Contact & Locations */
-.location-item, .contact-item {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: var(--text-muted);
+.premium-input:focus {
+    border-color: #eab308;
+    background: rgba(234, 179, 8, 0.05);
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
 }
 
-.location-item i, .contact-item i {
-    color: var(--primary);
-    margin-top: 4px;
+.premium-input::placeholder {
+    color: rgba(16, 185, 129, 0.4);
 }
 
-.contact-item a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.contact-item a:hover {
-    color: var(--text-main);
-}
-
-/* Social Media Icons */
-.social-icons {
-    display: flex;
-    gap: 12px;
-}
-
-.social-icons a {
-    width: 38px;
-    height: 38px;
-    background: #2a2a2a;
-    border-radius: 8px;
+/* Gold Premium Button */
+.gold-btn-premium {
+    background: linear-gradient(135deg, #fde047, #eab308);
+    color: #041a19;
+    font-weight: 800;
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    text-decoration: none;
-    transition: var(--transition);
 }
 
-/* Hover Animation: Rotate & Lift */
-.social-icons a:hover {
-    background: var(--primary);
-    transform: translateY(-5px) rotate(360deg);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+.gold-btn-premium:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(234, 179, 8, 0.5);
+    filter: brightness(1.1);
 }
 
-/* Bottom Bar */
-.footer-bottom {
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid #2d2d2d;
-    font-size: 13px;
-    color: var(--text-muted);
+/* Select Arrow Styling */
+select.premium-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23eab308'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5em;
+}
+/* Gold Text Gradient (Shared) */
+.text-gold-gradient {
+    background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #a16207 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-    }
+/* Premium Switch Styling */
+.premium-switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 38px;
 }
 
-@media (max-width: 600px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .footer-section h3::after {
-        left: 50%;
-        margin-left: -15px;
-    }
-    .location-item, .contact-item {
-        justify-content: center;
-    }
-    .social-icons {
-        justify-content: center;
-    }
-    .link-list a:hover {
-        transform: scale(1.1);
-    }
+.premium-switch input {
+    opacity: 0.8;
+    width: 0;
+    height: 0;
+}
+
+.premium-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.premium-slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 4px;
+    bottom: 4px;
+    background: linear-gradient(135deg, #fde047, #eab308);
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+}
+
+input:checked + .premium-slider {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #eab308;
+}
+
+input:checked + .premium-slider:before {
+    transform: translateX(32px);
+}
+
+/* Subtle Hover Effect for the Section Text */
+.premium-switch:hover .premium-slider {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
 }
