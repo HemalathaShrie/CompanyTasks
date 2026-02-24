@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple To-Do</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .todo-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:hover {
+            background: #fafafa;
+        }
+
+        .delete-btn {
+            color: #dc3545;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todo-card">
+        <h2>My Tasks</h2>
+        <div class="input-group">
+            <input type="text" id="todoInput" placeholder="Add a new task...">
+            <button onclick="newElement()">Add</button>
+        </div>
+        <ul id="todoList">
+        </ul>
+    </div>
+    <script>
+        function newElement() {
+            const input = document.getElementById("todoInput");
+            const val = input.value;
+
+            if (val === '') {
+                alert("You must write something!");
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.innerHTML = `
+        <span>${val}</span>
+        <span class="delete-btn" onclick="this.parentElement.remove()">\u00D7</span>
+    `;
+
+            document.getElementById("todoList").appendChild(li);
+            input.value = "";
+        }
+    </script>
+</body>
+
+</html>
