@@ -1,0 +1,167 @@
+:root {
+    --rs-primary: #1a5f7a;
+    --rs-secondary: #00af91;
+    --rs-text: #ffffff;
+    --rs-glass: rgba(255, 255, 255, 0.15);
+    --rs-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    /* High-quality academic background */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    background: var(--rs-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--rs-shadow);
+    color: var(--rs-text);
+    text-align: center;
+}
+
+.auth-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.auth-header p {
+    font-weight: 300;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.field-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.field-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.field-group i {
+    margin-right: 8px;
+    color: var(--rs-secondary);
+}
+
+.field-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.field-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.field-group input:focus {
+    outline: none;
+    border-color: var(--rs-secondary);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.main-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--rs-secondary);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.main-btn:hover {
+    background: #008f76;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 175, 145, 0.4);
+}
+
+.divider {
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.divider span {
+    padding: 0 10px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.google-btn img {
+    width: 20px;
+}
+
+.google-btn:hover {
+    background: #f1f1f1;
+}
+
+.toggle-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.toggle-link a {
+    color: var(--rs-secondary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
