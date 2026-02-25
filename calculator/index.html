@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM Calculator</title>
+    <style>
+        body {
+            background-color: #ffc0c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 500px;
+            height: 320px;
+            background: #222;
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        .display {
+            width: 100%;
+            height: 70px;
+            background: #000;
+            color: #fff;
+            text-align: right;
+            font-size: 25px;
+            padding: 20px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 22px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .operator {
+            background: orange;
+            color: white;
+        }
+
+        .equal {
+            background: green;
+            color: white;
+        }
+
+        .clear {
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        const app = document.getElementById("app");
+
+        const calculator = document.createElement("div");
+        calculator.classList.add("calculator");
+
+        const display = document.createElement("div");
+        display.classList.add("display");
+        display.innerText = "0";
+
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.classList.add("buttons");
+
+        const buttonValues = [
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "C", "0", "=", "+"
+        ];
+
+        buttonValues.forEach(value => {
+            const button = document.createElement("button");
+            button.innerText = value;
+
+            if (value === "C") {
+                button.classList.add("clear");
+            } else if (value === "=") {
+                button.classList.add("equal");
+            } else if (["+", "-", "*", "/"].includes(value)) {
+                button.classList.add("operator");
+            }
+
+            button.addEventListener("click", () => {
+                handleInput(value);
+            });
+
+            buttonsContainer.appendChild(button);
+        });
+
+        calculator.appendChild(display);
+        calculator.appendChild(buttonsContainer);
+        app.appendChild(calculator);
+
+        function handleInput(value) {
+
+            if (value === "C") {
+                display.innerText = "0";
+            }
+            else if (value === "=") {
+                try {
+                    display.innerText = eval(display.innerText);
+                } catch {
+                    display.innerText = "Error";
+                }
+            }
+            else {
+                if (display.innerText === "0") {
+                    display.innerText = value;
+                } else {
+                    display.innerText += value;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
