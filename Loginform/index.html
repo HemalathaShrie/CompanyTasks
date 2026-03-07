@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Auth - Unified Storage</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --error: #ef4444;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            perspective: 1000px;
+        }
+
+        .auth-container {
+            width: 420px;
+            height: 600px;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .auth-container.flipped { transform: rotateY(180deg); }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-back { transform: rotateY(180deg); }
+
+        h2 { margin-bottom: 0.5rem; font-size: 1.8rem; color: var(--primary); }
+        p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.85rem; }
+
+        .form-group { margin-bottom: 1.2rem; }
+        label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; font-weight: 600; }
+
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus { border-color: var(--primary); }
+        input.match { border-color: var(--success); }
+        input.mismatch { border-color: var(--error); }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover { background: var(--primary-hover); }
+
+        .switch-btn {
+            background: none;
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            text-decoration: underline;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            display: none;
+            text-align: center;
+        }
+
+        .error { display: block; background: rgba(239, 68, 68, 0.1); color: var(--error); border: 1px solid var(--error); }
+        .success { display: block; background: rgba(34, 197, 94, 0.1); color: var(--success); border: 1px solid var(--success); }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .shake { animation: shake 0.3s ease-in-out; }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container" id="authContainer">
+        <div class="card card-front">
+            <h2>Portal Login</h2>
+            <p>Access your stored credentials.</p>
+            <div id="loginMsg" class="message"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" required placeholder="••••••••">
+                </div>
+                <button type="submit">Unlock Vault</button>
+            </form>
+            <button class="switch-btn" onclick="toggleCard()">New here? Create Account</button>
+        </div>
+
+        <div class="card card-back">
+            <h2>Register</h2>
+            <p>Securely store your data in LocalStorage.</p>
+            <div id="regMsg" class="message"></div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPass" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPass" required>
+                </div>
+                <button type="submit">Save Credentials</button>
+            </form>
+            <button class="switch-btn" onclick="toggleCard()">Back to Login</button>
+        </div>
+    </div>
+
+    <script>
+        // --- CONSTANTS ---
+        const DB_KEY = "app_vault_users"; // ONE GLOBAL KEY
+        const SESSION_KEY = "active_session";
+
+        const authContainer = document.getElementById('authContainer');
+        const regPass = document.getElementById('regPass');
+        const confirmPass = document.getElementById('confirmPass');
+
+        // --- HELPER FUNCTIONS ---
+        function toggleCard() {
+            authContainer.classList.toggle('flipped');
+            clearMessages();
+        }
+
+        function clearMessages() {
+            document.querySelectorAll('.message').forEach(m => {
+                m.style.display = 'none';
+                m.className = 'message';
+            });
+        }
+
+        function triggerShake() {
+            authContainer.classList.add('shake');
+            setTimeout(() => authContainer.classList.remove('shake'), 400);
+        }
+
+        // --- VALIDATION ---
+        function validateMatching() {
+            if (confirmPass.value === "") {
+                confirmPass.className = "";
+                return;
+            }
+            if (regPass.value === confirmPass.value) {
+                confirmPass.className = "match";
+            } else {
+                confirmPass.className = "mismatch";
+            }
+        }
+
+        regPass.addEventListener('input', validateMatching);
+        confirmPass.addEventListener('input', validateMatching);
+
+        // --- CORE STORAGE LOGIC ---
+
+        // 1. REGISTER
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const pass = regPass.value;
+            const msg = document.getElementById('regMsg');
+
+            // Check passwords
+            if (pass !== confirmPass.value) {
+                msg.textContent = "Passwords do not match!";
+                msg.className = "message error";
+                triggerShake();
+                return;
+            }
+
+            // Retrieve current DB
+            const users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
+
+            // Check duplication
+            if (users.some(u => u.email === email)) {
+                msg.textContent = "User already exists!";
+                msg.className = "message error";
+                return;
+            }
+
+            // Add and Save
+            users.push({ name, email, pass: btoa(pass) });
+            localStorage.setItem(DB_KEY, JSON.stringify(users));
+
+            msg.textContent = "Success! Account Saved.";
+            msg.className = "message success";
+            
+            setTimeout(() => {
+                toggleCard();
+                e.target.reset();
+            }, 1200);
+        });
+
+        // 2. LOGIN
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPass').value;
+            const msg = document.getElementById('loginMsg');
+
+            const users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
+            const user = users.find(u => u.email === email && atob(u.pass) === pass);
+
+            if (user) {
+                msg.textContent = `Welcome, ${user.name}!`;
+                msg.className = "message success";
+                localStorage.setItem(SESSION_KEY, JSON.stringify({ name: user.name, time: new Date() }));
+                // In a real app, window.location.href = 'dashboard.html';
+            } else {
+                msg.textContent = "Invalid Login Details.";
+                msg.className = "message error";
+                triggerShake();
+            }
+        });
+        // function showDashboard(name) {
+        //     document.getElementById('authContainer').style.display = 'none';
+        //     document.getElementById('dashboard').style.display = 'flex';
+        //     document.getElementById('welcomeName').textContent = `Welcome, ${name}`;
+        //     document.getElementById('userInitial').textContent = name.charAt(0).toUpperCase();
+        // }
+    </script>
+</body>
+</html>
